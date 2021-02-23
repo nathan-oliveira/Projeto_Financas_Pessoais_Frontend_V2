@@ -1,0 +1,17 @@
+.search {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 0.6rem;
+
+  .search__input {
+    position: absolute;
+    padding: 0.7rem 2.2rem 0.7rem 0.7rem;
+    border-radius: 0.2rem;
+    border: 1px solid #d6d6d6;
+    background: rgba(255, 255, 255, 0.493);
+  }
+
+  svg {
+    margin: 0.7rem;
+  }
+}

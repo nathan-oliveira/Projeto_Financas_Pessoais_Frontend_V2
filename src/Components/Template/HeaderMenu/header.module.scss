@@ -1,0 +1,18 @@
+.menu__pages {
+  a {
+    padding: 10px 20px;
+    display: block;
+    background: #f4f7fc;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    color: rgb(7, 0, 0);
+  }
+
+  a.menu__item__active {
+    pointer-events: none;
+    background: linear-gradient(90deg, #271181 40%, #87f 100%);
+    color: white;
+    border: none;
+    cursor: not-allowed;
+  }
+}

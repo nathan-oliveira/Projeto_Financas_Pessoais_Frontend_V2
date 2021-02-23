@@ -1,0 +1,6 @@
+.content {
+  grid-area: content;
+  min-height: 100vh;
+  padding: var(--padding-global);
+  z-index: 2;
+}

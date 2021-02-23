@@ -1,0 +1,201 @@
+@font-face {
+  font-family: Nunito;
+  src: url(../Assets/fonts/Nunito.css);
+}
+
+@font-face {
+  font-family: Spectral;
+  src: url(../Assets/fonts/Spectral.css);
+}
+
+:root {
+  --padding-global: 15px 20px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  color: #333;
+  font-family: "Nunito", Arial, Helvetica, sans-serif;
+  background: url(../Assets/svg/pattern.svg) repeat top;
+}
+
+h1,
+h2,
+h3,
+h4,
+p {
+  margin: 0px;
+}
+
+ul,
+li {
+  list-style: none;
+  padding: 0px;
+  margin: 0px;
+}
+
+img {
+  display: block;
+}
+
+a {
+  text-decoration: none;
+  color: #333;
+}
+
+button,
+input,
+select {
+  margin: 0;
+  padding: 0;
+  display: block;
+  font-size: 0.9rem;
+  color: #333;
+  outline: none;
+}
+
+.App {
+  display: grid;
+  grid-template-columns: min-content 1fr;
+  grid-template-areas:
+    "sidenav nav"
+    "sidenav content"
+    "sidenav footer"
+  ;
+}
+
+@media (max-width: 800px) {
+  .App {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "nav"
+      "sidenav"
+      "content"
+      "footer"
+    ;
+  }
+}
+
+.logo {
+  grid-area: logo;
+}
+
+.offscreen {
+  color: transparent !important;
+  transition: 1s;
+}
+
+.onscreen {
+  transition: 1s;
+}
+
+.animeTop {
+  opacity: 0;
+  transform: translateY(-20px);
+  animation: animePage .3s forwards;
+}
+
+.animeLeft {
+  opacity: 0;
+  transform: translateX(-20px);
+  animation: animePage .3s forwards;
+}
+
+@keyframes animePage {
+  to {
+    opacity: 1;
+    transform: initial;
+  }
+}
+
+.col_3 {
+  width: 19%;
+}
+
+.col_6 {
+  width: 49%;
+}
+
+.col_9 {
+  width: 79%;
+}
+
+.col_12 {
+  width: 100%;
+}
+
+@media (max-width: 800px) {
+
+  .col_3,
+  .col_6,
+  .col_9,
+  .col_12 {
+    width: 100%;
+  }
+}
+
+/* Table */
+.table__action {
+  width: 10%;
+}
+
+.table__col1 {
+  display: none;
+}
+
+.table__col2 {
+  max-width: 20%;
+}
+
+td.table__col2 {
+  border-radius: 0 0 0 4px !important;
+}
+
+th.table__col2 {
+  border-radius: 4px 0 0 0;
+}
+
+.table__col3 {
+  width: 25%;
+}
+
+.table__col4 {
+  width: 16%;
+}
+
+@media (max-width: 1441px) {
+  .table__col4 {
+    display: none;
+  }
+
+  .table__action {
+    width: 15%;
+  }
+}
+
+@media (max-width: 926px) {
+  .table__col3 {
+    display: none;
+  }
+
+  .table__action {
+    width: 19%;
+  }
+}
+
+@media (max-width: 599px) {
+  .table__action {
+    width: 25%;
+  }
+}
+
+@media (max-width: 393px) {
+  .table__action {
+    width: 38%;
+  }
+}

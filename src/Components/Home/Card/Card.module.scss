@@ -1,0 +1,74 @@
+.card {
+  flex: 1 1 10%;
+  margin: 10px;
+}
+
+.card__receita,
+.card__despesa,
+.card__total {
+  display: flex;
+  justify-content: space-between;
+}
+
+.card__body {
+  padding: 15px 10px;
+}
+
+.card__receita {
+  background-color: #00c0ef !important;
+}
+
+.card__despesa {
+  background-color: #dd4b39 !important;
+}
+
+.card__total {
+  background-color: #00a65a !important;
+}
+
+.card__footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card__footer svg {
+  width: 15px;
+  color: #ffffff80;
+}
+
+.card__receita__footer {
+  background: #00a7d0;
+}
+
+.card__despesa__footer {
+  background: #c54535;
+}
+
+.card__total__footer {
+  background: #009651;
+}
+
+.card__footer__title {
+  color: #fff;
+  padding: 2px 0;
+  margin: 0 5px;
+}
+
+.card__logo svg {
+  width: 5em;
+  height: 5em;
+  color: #00000026;
+}
+
+.card__title {
+  font-size: 1.8em;
+  font-weight: bold;
+  color: #fff;
+}
+
+.card__subtitle {
+  margin-top: 10px;
+  font-size: .8em;
+  color: #fff;
+}
