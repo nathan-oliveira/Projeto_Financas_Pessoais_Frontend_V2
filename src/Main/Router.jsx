@@ -6,6 +6,7 @@ import Home from '../Components/Home'
 import User from '../Components/User'
 import Business from '../Components/Business'
 import NotFound from '../Components/Helper/NotFound'
+import Goals from '../Components/Goals'
 
 const Router = () => {
   return (
@@ -14,6 +15,7 @@ const Router = () => {
       <Route path="/login" element={<User />} />
       <ProtectedRoute path="/receita/*" element={<Business />} />
       <ProtectedRoute path="/despesa/*" element={<Business />} />
+      <ProtectedRoute path="/metas/*" element={<Goals />} />
       <Route path="*" element={<NotFound />} />
     </Routes>
   )

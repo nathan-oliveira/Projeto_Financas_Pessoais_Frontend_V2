@@ -8,6 +8,7 @@ import HeaderMenu from '../Template/HeaderMenu'
 import Listing from '../Business/Listing'
 import Form from '../Business/Form'
 import NotFound from '../Helper/NotFound'
+import Head from '../Helper/Head'
 
 const Expenditure = () => {
   const [businessTag, setBusinessTag] = React.useState('');
@@ -28,6 +29,7 @@ const Expenditure = () => {
 
   return (
     <section>
+      <Head title="Autenticação" />
       <Breadcrumb title={breadcrumbTag} path={businessTag} />
 
       <div className={styles.content__page}>

@@ -1,9 +1,10 @@
 import React from 'react'
 import { useSelector } from 'react-redux';
+import { Navigate } from 'react-router-dom';
 
 import styles from './User.module.scss'
 import Form from './Form'
-import { Navigate } from 'react-router-dom';
+import Head from '../Helper/Head'
 
 const User = () => {
   const [error, setError] = React.useState(null);
@@ -12,6 +13,7 @@ const User = () => {
 
   if ((data === null || data?.token === null)) return (
     <section className={styles.content}>
+      <Head title="Autenticação" />
       <div className={styles.card}>
         <div className={styles.card__header}>
           <h1 className={login ? styles.card__header__title : styles.card__header__title2}>
