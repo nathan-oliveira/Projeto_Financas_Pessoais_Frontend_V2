@@ -4,7 +4,7 @@ import ProtectedRoute from '../Components/Helper/ProtectedRoute'
 
 import Home from '../Components/Home'
 import User from '../Components/User'
-import Revenues from '../Components/Revenues'
+import Business from '../Components/Business'
 import NotFound from '../Components/Helper/NotFound'
 
 const Router = () => {
@@ -12,7 +12,8 @@ const Router = () => {
     <Routes>
       <ProtectedRoute path="/" element={<Home />} />
       <Route path="/login" element={<User />} />
-      <ProtectedRoute path="/receita/*" element={<Revenues />} />
+      <ProtectedRoute path="/receita/*" element={<Business />} />
+      <ProtectedRoute path="/despesa/*" element={<Business />} />
       <Route path="*" element={<NotFound />} />
     </Routes>
   )

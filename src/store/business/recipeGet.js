@@ -18,13 +18,13 @@ const slice = createAsyncSlice({
 export const fetchRecipes = slice.asyncAction;
 export const { getRecipe } = slice.actions;
 
-export const fetchReceita = () => async (dispatch, getState) => {
+export const fetchRecipe = (business) => async (dispatch, getState) => {
   const { token } = getState()
   const { payload } = await dispatch(fetchRecipes(token.data.token));
   let recipe = [];
 
   payload.forEach((item) => {
-    if (item.types === 'receita') recipe.push({
+    if (item.types === business) recipe.push({
       id: item.id,
       description: item.description,
       money: numeroPreco(item.money),

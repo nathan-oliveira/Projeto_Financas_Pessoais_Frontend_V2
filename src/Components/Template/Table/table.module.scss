@@ -18,6 +18,10 @@
     text-align: center;
   }
 
+  .table__notItem:last-child {
+    border-radius: 4px 4px 0 0 !important;
+  }
+
   .table__thead {
     width: 100%;
 
