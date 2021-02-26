@@ -9,6 +9,7 @@ import menu from './menu/menuToggle'
 import businessGetId from './business/businessGetId'
 import businessPost from './business/businessPost'
 import businessPut from './business/businessPut'
+import goals from './goals/goalsGet'
 
 const rootReducer = combineReducers({
   userPost,
@@ -19,7 +20,8 @@ const rootReducer = combineReducers({
   recipe,
   businessPost,
   businessGetId,
-  businessPut
+  businessPut,
+  goals
 })
 
 export default rootReducer;

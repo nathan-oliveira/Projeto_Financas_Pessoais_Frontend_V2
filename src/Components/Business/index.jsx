@@ -29,7 +29,7 @@ const Expenditure = () => {
 
   return (
     <section>
-      <Head title="Autenticação" />
+      <Head title={breadcrumbTag} />
       <Breadcrumb title={breadcrumbTag} path={businessTag} />
 
       <div className={styles.content__page}>

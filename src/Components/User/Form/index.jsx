@@ -22,10 +22,6 @@ const Form = ({ login, setLogin, setError }) => {
   const { data: dataToken, error: errorToken } = useSelector(state => state.token)
 
   React.useEffect(() => {
-    setError(error);
-  }, [error])
-
-  React.useEffect(() => {
     setError(errorToken);
   }, [errorToken])
 
@@ -36,6 +32,7 @@ const Form = ({ login, setLogin, setError }) => {
       if (email.validate() && password.validate()) {
         await dispatch(userLogin({ email: email.value, password: password.value }))
         if (!errorToken) navigate('/')
+        if (error) setError(error)
       }
     } else {
       if (name.validate() && email.validate() && password.validate() && password_confirmation.validate()) {
@@ -46,7 +43,8 @@ const Form = ({ login, setLogin, setError }) => {
           password_confirmation: password_confirmation.value
         }))
 
-        if (data) setLogin(true);
+        if (error) setError(error)
+        if (!error) setLogin(true);
       }
     }
   }

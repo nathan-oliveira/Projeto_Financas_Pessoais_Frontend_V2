@@ -101,3 +101,15 @@ export function PUT_BUSSINESS({ id, formData, token }) {
     }
   }
 }
+
+export function GET_GOALS(token) {
+  return {
+    url: `${URL_API}/goal`,
+    options: {
+      method: 'GET',
+      headers: {
+        'Authorization': 'Bearer ' + token,
+      },
+    }
+  }
+}

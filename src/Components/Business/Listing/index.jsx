@@ -1,5 +1,5 @@
 import React from 'react'
-import { useLocation, useNavigate } from 'react-router-dom'
+import { useLocation, useNavigate, Link } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 import { fetchRecipe } from '../../../store/business/recipeGet';
 import { businessDelete } from '../../../store/business/businessDelete'
@@ -63,7 +63,13 @@ const Listing = () => {
       />
     </div>
   )
-  else return null;
+  else
+    return (
+      <div className="animeLeft empty__table">
+        <h1 className="title__empty__table">Nenhum registro encontrado!</h1>
+        <Link to={`/${businessTag}/cadastrar`}>Criar agora!</Link>
+      </div>
+    );
 }
 
 export default Listing

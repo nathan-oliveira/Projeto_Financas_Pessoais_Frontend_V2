@@ -168,7 +168,13 @@ th.table__col2 {
   width: 16%;
 }
 
-@media (max-width: 1441px) {
+@media (min-width: 1700px) {
+  .table__action {
+    width: 7%;
+  }
+}
+
+@media (max-width: 1443px) {
   .table__col4 {
     display: none;
   }
@@ -197,5 +203,51 @@ th.table__col2 {
 @media (max-width: 393px) {
   .table__action {
     width: 38%;
+  }
+}
+
+.empty__table {
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+
+  .title__empty__table {
+    width: 100%;
+    text-align: center;
+    transition: all 0.3s;
+    color: #65d;
+    font-size: 30px;
+    margin-bottom: 1%;
+    transition: 0.5s;
+
+  }
+
+  a:hover,
+  .title__empty__table:hover {
+    transform: scale(1.1);
+    transition: 0.5s;
+  }
+
+  a {
+    padding: 5px 20px !important;
+    background: #65d;
+    color: white;
+    border-radius: 5px;
+    display: inline-flex;
+    cursor: pointer;
+    transition: 0.5s;
+  }
+}
+
+@media screen and (max-width: 1070px) {
+  .empty__table a {
+    width: 89%;
+  }
+}
+
+@media screen and (max-width: 780px) {
+  .empty__table a {
+    font-size: 20px;
   }
 }
