@@ -7,5 +7,4 @@ const slice = createAsyncSlice({
 })
 
 export const businessPost = slice.asyncAction;
-
 export default slice.reducer;

@@ -5,6 +5,8 @@ import { useParams, useNavigate, useLocation } from 'react-router-dom'
 import { businessPost } from '../../../store/business/businessPost'
 import { businessGetId } from '../../../store/business/businessGetId'
 import { businessPut } from '../../../store/business/businessPut'
+import { fetchCategory } from '../../../store/category/categoryGet'
+//fetchCategory
 
 import useForm from '../../../Hooks/useForm'
 import { formatMoney, revertMoney } from '../../../Helpers'
@@ -35,8 +37,11 @@ const Form = () => {
   const { error: errorPost, loading: loadingPost } = useSelector(state => state.businessPost)
   const { error: errorPut, loading: loadingPut } = useSelector(state => state.businessPut)
   const { error, loading, data } = useSelector(state => state.businessGetId)
+  const { data: dataCategory } = useSelector(state => state.category)
 
   React.useEffect(() => {
+    dispatch(fetchCategory(token))
+
     if (id) {
       dispatch(businessGetId({ id, token }))
     }
@@ -112,6 +117,7 @@ const Form = () => {
             label="Categoria"
             name="categoryId"
             {...category}
+            options={dataCategory}
           />
         </Grid>
       </Row>

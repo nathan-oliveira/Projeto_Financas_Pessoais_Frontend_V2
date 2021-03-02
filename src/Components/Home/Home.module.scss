@@ -4,3 +4,22 @@
   display: flex;
   flex-wrap: wrap;
 }
+
+.empty__graphs {
+  display: flex;
+  justify-content: center;
+  margin-top: 1%;
+  margin-bottom: 1%;
+  width: 100%;
+
+  p {
+    color: #65d;
+    font-size: 20px;
+    transition: 0.5s;
+  }
+
+  p:hover {
+    transform: scale(1.1);
+    transition: 0.5s;
+  }
+}

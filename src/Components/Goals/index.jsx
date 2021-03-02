@@ -7,6 +7,7 @@ import HeaderMenu from '../Template/HeaderMenu'
 import Head from '../Helper/Head'
 
 import Listing from '../Goals/Listing'
+import Form from '../Goals/Form'
 import NotFound from '../Helper/NotFound'
 
 const Goals = () => {
@@ -19,6 +20,7 @@ const Goals = () => {
         <HeaderMenu path="/metas" />
         <Routes>
           <Route path="/" element={<Listing />} />
+          <Route path="/cadastrar" element={<Form />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </div>

@@ -1,7 +1,7 @@
 import React from 'react'
 import styles from './Select.module.scss'
 
-const Select = ({ label, name, value, onChange, error, onBlur }) => {
+const Select = ({ label, name, value, onChange, error, onBlur, options }) => {
   return (
     <div className={styles.wrapper}>
       <label htmlFor={name} className={error ? styles.label__error : styles.label}>{label}:</label>
@@ -14,9 +14,9 @@ const Select = ({ label, name, value, onChange, error, onBlur }) => {
         value={value}
       >
         <option value="" hidden disabled>Selecione...</option>
-        <option value="1">Teste1</option>
-        <option value="2">Teste2</option>
-        <option value="3">Teste3</option>
+        {options.map((op) => (
+          <option value={op.id} key={op.id}>{op.name}</option>
+        ))}
       </select>
       {error && <p className={styles.msg__error}>{error}</p>}
     </div>

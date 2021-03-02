@@ -240,14 +240,10 @@ th.table__col2 {
   }
 }
 
-@media screen and (max-width: 1070px) {
-  .empty__table a {
-    width: 89%;
-  }
-}
-
-@media screen and (max-width: 780px) {
-  .empty__table a {
-    font-size: 20px;
+@media screen and (max-width: 1000px) {
+  .empty__table {
+    .title__empty__table {
+      font-size: 20px !important;
+    }
   }
 }

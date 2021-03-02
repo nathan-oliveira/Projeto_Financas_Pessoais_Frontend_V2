@@ -24,10 +24,6 @@ const Listing = () => {
     dispatch(fetchGoals(token))
   }, [dispatch])
 
-  React.useEffect(() => {
-    console.log(data)
-  }, [data])
-
   async function deleteGoal(id) {
     const confirm = window.confirm('Tem certeza que deseja deletar?');
 

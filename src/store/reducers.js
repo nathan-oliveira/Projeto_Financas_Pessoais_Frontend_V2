@@ -10,6 +10,9 @@ import businessGetId from './business/businessGetId'
 import businessPost from './business/businessPost'
 import businessPut from './business/businessPut'
 import goals from './goals/goalsGet'
+import goalPost from './goals/goalPost'
+import category from './category/categoryGet'
+import categoryPost from './category/categoryPost'
 
 const rootReducer = combineReducers({
   userPost,
@@ -21,7 +24,10 @@ const rootReducer = combineReducers({
   businessPost,
   businessGetId,
   businessPut,
-  goals
+  goals,
+  goalPost,
+  category,
+  categoryPost
 })
 
 export default rootReducer;

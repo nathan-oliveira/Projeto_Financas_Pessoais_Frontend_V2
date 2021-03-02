@@ -9,7 +9,7 @@ import Card from './Card'
 import Head from '../Helper/Head'
 
 const Home = () => {
-  const [graph, setGraph] = React.useState(null)
+  const [graphs, setGraphs] = React.useState('')
   const dispatch = useDispatch();
   const { cardFinanceiro: data } = useSelector(state => state.business)
 
@@ -18,10 +18,11 @@ const Home = () => {
   }, [dispatch])
 
   React.useEffect(() => {
-    if (data.receita === "R$ 0,00") return setGraph('Para exibir os gráficos é necessário existe uma Receita')
-    if (data.despesa === "R$ 0,00") return setGraph('Para exibir os gráficos é necessário existe uma Despesa')
-    return setGraph(null)
-  }, [data])
+    if (data.receita === "R$ 0,00") return setGraphs('Para exibir os gráficos é necessário existe uma Receita cadastrada')
+    if (data.despesa === "R$ 0,00") return setGraphs('Para exibir os gráficos é necessário existe uma Despesa cadastrada')
+
+    setGraphs('')
+  }, [data, graphs])
 
   return (
     <section>
@@ -32,12 +33,14 @@ const Home = () => {
         <Card color="despesa" valor={data?.despesa} />
         <Card color="total" valor={data?.total} />
       </div>
-      {graph ? (
+      {graphs === '' ? (
         <div className="animeLeft dashboard__graphs">
           <PieGraph data={data} />
         </div>
       ) : (
-          <p>{graph}</p>
+          <div className={`animeLeft ${styles.empty__graphs}`}>
+            <p>{graphs}</p>
+          </div>
         )}
 
     </section>

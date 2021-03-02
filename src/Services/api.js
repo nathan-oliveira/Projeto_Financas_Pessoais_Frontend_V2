@@ -113,3 +113,43 @@ export function GET_GOALS(token) {
     }
   }
 }
+
+export function POST_GOAL({ formData, token }) {
+  return {
+    url: `${URL_API}/goal`,
+    options: {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + token
+      },
+      body: JSON.stringify(formData)
+    }
+  }
+}
+
+export function GET_CATEGORY(token) {
+  return {
+    url: `${URL_API}/category`,
+    options: {
+      method: 'GET',
+      headers: {
+        'Authorization': 'Bearer ' + token,
+      },
+    }
+  }
+}
+
+export function POST_CATEGORY({ formData, token }) {
+  return {
+    url: `${URL_API}/category`,
+    options: {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + token
+      },
+      body: JSON.stringify(formData)
+    }
+  }
+}
