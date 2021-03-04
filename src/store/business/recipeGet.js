@@ -32,7 +32,7 @@ export const fetchRecipe = (business) => async (dispatch, getState) => {
     })
   })
 
-  await dispatch(getRecipe(recipe))
+  dispatch(getRecipe(recipe))
 }
 
 export default slice.reducer;

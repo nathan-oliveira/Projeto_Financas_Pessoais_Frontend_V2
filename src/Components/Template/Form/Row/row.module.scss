@@ -1,5 +1,6 @@
 .row {
   display: flex;
-  flex-wrap: wrap-reverse;
+  // flex-wrap: wrap-reverse;
   justify-content: space-between;
+  flex-wrap: wrap;
 }

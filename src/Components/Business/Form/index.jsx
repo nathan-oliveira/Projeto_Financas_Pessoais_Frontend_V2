@@ -6,7 +6,6 @@ import { businessPost } from '../../../store/business/businessPost'
 import { businessGetId } from '../../../store/business/businessGetId'
 import { businessPut } from '../../../store/business/businessPut'
 import { fetchCategory } from '../../../store/category/categoryGet'
-//fetchCategory
 
 import useForm from '../../../Hooks/useForm'
 import { formatMoney, revertMoney } from '../../../Helpers'

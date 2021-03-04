@@ -4,7 +4,8 @@
   border: none;
   border-radius: 0.2rem;
   padding: .7rem;
-  background: rgba(68, 0, 255, .7254901960784313);
+  background: #4c60cf;
+  // background: rgba(68, 0, 255, .7254901960784313);
   color: white;
   min-width: 8rem;
   box-sizing: border-box;
@@ -21,6 +22,6 @@
 }
 
 .button:hover {
-  background: #65d;
-  transform: scale(1.1);
+  background: #3c51cc;
+  transform: scale(1.05);
 }

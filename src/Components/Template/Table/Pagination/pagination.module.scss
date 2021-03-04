@@ -10,13 +10,13 @@
 }
 
 .page__button {
-  font-size: 20px;
-  padding: 0px 13px 0px 13px;
+  font-size: 18px;
+  padding: 0px 12px 0px 12px;
 }
 
 .page__link {
   font-size: 18px;
-  padding: 2px 14px 1px 14px;
+  padding: 1px 15px 0px 15px;
 }
 
 .page__button,
@@ -30,13 +30,14 @@
 }
 
 .page__link__active {
-  background: #4430a5;
+  background: #3c51cc;
   color: #fff;
+  border: 1px solid #3c51cc;
 }
 
 .pagination .page__button:hover,
 .pagination .page__link:hover {
-  background: #4430a5;
+  background: #3c51cc;
   color: #fff;
 }
 

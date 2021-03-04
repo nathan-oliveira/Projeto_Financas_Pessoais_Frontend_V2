@@ -12,7 +12,7 @@ const User = () => {
   const { data } = useSelector(state => state.token)
 
   if ((data === null || data?.token === null)) return (
-    <section className={styles.content}>
+    <section className={`${styles.content} animeTop`}>
       <Head title="Autenticação" />
       <div className={styles.card}>
         <div className={styles.card__header}>

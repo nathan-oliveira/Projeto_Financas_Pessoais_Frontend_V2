@@ -50,7 +50,7 @@ const Form = ({ login, setLogin, setError }) => {
   }
 
   return (
-    <form onSubmit={handleSubmit} autoComplete="off">
+    <form onSubmit={handleSubmit} autoComplete="off" className="form">
       {!login && (
         <Row>
           <Grid cols="12">
@@ -100,7 +100,12 @@ const Form = ({ login, setLogin, setError }) => {
         </Row>
       )}
 
-      <Row>
+      <Row classRow="row__reverse">
+        {loading ? (
+          <Button disabled>{login ? 'Entrando...' : 'Cadastrando...'}</Button>
+        ) : (
+            <Button>{login ? 'Entrar' : 'Cadastrar'}</Button>
+          )}
         <button
           type="button"
           className={styles.button__link}
@@ -108,11 +113,6 @@ const Form = ({ login, setLogin, setError }) => {
         >
           {login ? 'Não possui uma conta? Criar Agora.' : 'Já possui uma conta? Entrar Agora. '}
         </button>
-        {loading ? (
-          <Button disabled>{login ? 'Entrando...' : 'Cadastrando...'}</Button>
-        ) : (
-            <Button>{login ? 'Entrar' : 'Cadastrar'}</Button>
-          )}
       </Row>
     </form>
   )

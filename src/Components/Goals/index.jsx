@@ -21,6 +21,7 @@ const Goals = () => {
         <Routes>
           <Route path="/" element={<Listing />} />
           <Route path="/cadastrar" element={<Form />} />
+          <Route path="/editar/:id" element={<Form />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </div>

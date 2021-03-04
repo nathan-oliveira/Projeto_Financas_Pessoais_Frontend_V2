@@ -6,9 +6,8 @@
 }
 
 .card {
-  width: 440px;
-  margin-top: 17vh;
-  /* height: 400px; */
+  max-width: 440px;
+  margin-top: 25vh;
   background: #fff;
   box-shadow: 0px 1px 5px 0px rgba(54, 54, 54, 0.35);
   -webkit-box-shadow: 0px 1px 5px 0px rgba(54, 54, 54, 0.35);
@@ -16,7 +15,7 @@
 }
 
 .card__header {
-  border-top: 4px solid #4400ffb9;
+  border-top: 4px solid #4c60cf;
   padding: 2.2% 6%;
   background: #fff;
 }
@@ -44,11 +43,11 @@
 
 @media screen and (max-width: 518px) {
   .card__header__title:after {
-    width: 58%;
+    width: 23%;
   }
 
   .card__header__title2:after {
-    width: 45%;
+    width: 37%;
   }
 
   .card__header__title,
@@ -68,3 +67,11 @@
   text-align: center;
   margin-bottom: 0.5rem;
 }
+
+/*
+.form {
+  .row {
+    flex-direction: row-reverse !important;
+  }
+}
+*/

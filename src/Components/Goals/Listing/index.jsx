@@ -2,6 +2,7 @@ import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link, useNavigate } from 'react-router-dom';
 import { fetchGoals } from '../../../store/goals/goalsGet'
+import { goalDelete } from '../../../store/goals/goalDelete'
 
 import Error from '../../Helper/Error';
 import Loading from '../../Helper/Loading';
@@ -28,12 +29,13 @@ const Listing = () => {
     const confirm = window.confirm('Tem certeza que deseja deletar?');
 
     if (confirm) {
-      console.log('Sim')
+      await dispatch(goalDelete({ id, token }))
+      dispatch(fetchGoals(token))
     }
   }
 
   async function getGoal(id) {
-    console.log(id)
+    navigate(`/metas/editar/${id}`)
   }
 
   if (loading) return <Loading />
