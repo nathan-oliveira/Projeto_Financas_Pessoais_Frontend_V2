@@ -5,6 +5,7 @@ import { useNavigate, useParams } from 'react-router-dom'
 import useForm from '../../../Hooks/useForm'
 import { categoryPost } from '../../../store/category/categoryPost'
 import { categoryGetId } from '../../../store/category/categoryGetId'
+import { categoryPut } from '../../../store/category/categoryPut'
 
 import Input from '../../Template/Form/Input'
 import Button from '../../Template/Form/Button'
@@ -26,6 +27,7 @@ const Form = () => {
   const { token } = useSelector(state => state.token.data)
   const { error, loading, data } = useSelector(state => state.categoryGetId)
   const { error: errorPost, loading: loadingPost } = useSelector(state => state.categoryPost)
+  const { error: errorPut, loading: loadingPut } = useSelector(state => state.categoryPut)
 
   React.useEffect(() => {
     if (id) {
@@ -50,7 +52,8 @@ const Form = () => {
       }
 
       if (id) {
-        console.log('PUT => ', id)
+        await dispatch(categoryPut({ id, formData, token }))
+        if (!errorPut && !loadingPut) navigate('/categoria')
       } else {
         await dispatch(categoryPost({ formData, token }))
         if (!errorPost && !loadingPost) navigate('/categoria')

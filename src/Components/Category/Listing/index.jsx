@@ -1,7 +1,9 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link, useNavigate } from 'react-router-dom'
+
 import { fetchCategory } from '../../../store/category/categoryGet'
+import { categoryDelete } from  '../../../store/category/categoryDelete'
 
 import Error from '../../Helper/Error'
 import Loading from '../../Helper/Loading'
@@ -28,7 +30,8 @@ const Listing = () => {
     const confirm = window.confirm('Tem certeza que deseja deletar?')
 
     if (confirm) {
-      console.log(id)
+      await dispatch(categoryDelete({ id, token }))
+      dispatch(fetchCategory(token))
     }
   }
 

@@ -20,6 +20,8 @@ import goalPut from './goals/goalPut'
 import category from './category/categoryGet'
 import categoryPost from './category/categoryPost'
 import categoryGetId from './category/categoryGetId'
+import categoryPut from './category/categoryPut'
+import categoryDelete from './category/categoryDelete'
 
 const rootReducer = combineReducers({
   userPost,
@@ -38,7 +40,9 @@ const rootReducer = combineReducers({
   goalPut,
   category,
   categoryPost,
-  categoryGetId
+  categoryGetId,
+  categoryPut,
+  categoryDelete
 })
 
 export default rootReducer;

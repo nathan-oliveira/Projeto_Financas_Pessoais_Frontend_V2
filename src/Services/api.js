@@ -203,3 +203,29 @@ export function GET_CATEGORY_ID({ id, token }) {
     }
   }
 }
+
+export function PUT_CATEGORY({ id, formData, token }) {
+  return {
+    url: `${URL_API}/category/${id}`,
+    options: {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + token
+      },
+      body: JSON.stringify(formData)
+    }
+  }
+}
+
+export function DELETE_CATEGORY({ id, token }) {
+  return {
+    url: `${URL_API}/category/${id}`,
+    options: {
+      method: 'DELETE',
+      headers: {
+        'Authorization': 'Bearer ' + token
+      },
+    }
+  }
+}
