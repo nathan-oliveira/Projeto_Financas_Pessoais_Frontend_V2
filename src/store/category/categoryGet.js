@@ -9,5 +9,5 @@ const slice = createAsyncSlice({
   fetchConfig: (token) => GET_CATEGORY(token)
 })
 
-export const fetchCategory = slice.asyncAction;
+export const fetchCategory = slice.asyncAction
 export default slice.reducer;

@@ -7,6 +7,7 @@ import User from '../Components/User'
 import Business from '../Components/Business'
 import NotFound from '../Components/Helper/NotFound'
 import Goals from '../Components/Goals'
+import Category from '../Components/Category'
 
 const Router = () => {
   return (
@@ -16,6 +17,7 @@ const Router = () => {
       <ProtectedRoute path="/receita/*" element={<Business />} />
       <ProtectedRoute path="/despesa/*" element={<Business />} />
       <ProtectedRoute path="/metas/*" element={<Goals />} />
+      <ProtectedRoute path="/categoria/*" element={<Category />} />
       <Route path="*" element={<NotFound />} />
     </Routes>
   )

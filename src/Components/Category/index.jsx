@@ -1,23 +1,23 @@
 import React from 'react'
-import styles from './Goals.module.scss'
+import styles from './Category.module.scss'
 import { Routes, Route } from 'react-router-dom'
 
 import Breadcrumb from '../Template/Breadcrumb'
 import HeaderMenu from '../Template/HeaderMenu'
 import Head from '../Helper/Head'
 
-import Listing from '../Goals/Listing'
+import Listing from './Listing'
 import Form from './Form'
 import NotFound from '../Helper/NotFound'
 
-const Goals = () => {
+const Category = () => {
   return (
     <section>
-      <Head title="Metas" />
-      <Breadcrumb title="Metas" path="/metas" />
+      <Head title="Categoria" />
+      <Breadcrumb title="Categoria" path="/categoria" />
 
       <div className={styles.content__page}>
-        <HeaderMenu path="/metas" />
+        <HeaderMenu path="/categoria" />
         <Routes>
           <Route path="/" element={<Listing />} />
           <Route path="/cadastrar" element={<Form />} />
@@ -29,4 +29,4 @@ const Goals = () => {
   )
 }
 
-export default Goals
+export default Category

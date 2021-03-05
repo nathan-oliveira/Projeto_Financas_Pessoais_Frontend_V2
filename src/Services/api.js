@@ -191,3 +191,15 @@ export function POST_CATEGORY({ formData, token }) {
     }
   }
 }
+
+export function GET_CATEGORY_ID({ id, token }) {
+  return {
+    url: `${URL_API}/category/${id}`,
+    options: {
+      method: 'GET',
+      headers: {
+        'Authorization': 'Bearer ' + token,
+      },
+    }
+  }
+}

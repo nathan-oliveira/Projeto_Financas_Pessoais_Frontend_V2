@@ -69,7 +69,7 @@ const Form = () => {
   if (loading) return <Loading />
   if (error) return <Error error={error} />
   if (data || !loading) return (
-    <form onSubmit={handleSubmit} className="from animeLeft" autoComplete="off">
+    <form onSubmit={handleSubmit} className="form animeLeft" autoComplete="off">
       <Row>
         <Grid cols="12">
           <Input

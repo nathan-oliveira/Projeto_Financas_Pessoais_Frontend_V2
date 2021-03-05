@@ -117,8 +117,16 @@ select {
   width: 19%;
 }
 
+.col__4 {
+  width: 29%;
+}
+
 .col__6 {
   width: 49%;
+}
+
+.col__8 {
+  width: 69%;
 }
 
 .col__9 {
@@ -131,7 +139,9 @@ select {
 
 @media (max-width: 800px) {
   .col__3,
+  .col__4,
   .col__6,
+  .col__8,
   .col__9,
   .col__12 {
     width: 100%;
@@ -255,4 +265,8 @@ th.table__col2 {
 
 .row__reverse {
   flex-direction: row-reverse !important;
+
+  button {
+    width: 100% !important;
+  }
 }

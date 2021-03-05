@@ -30,7 +30,7 @@ const NavItem = ({ mobile }) => {
         <TrendingUp />
         <span className={(!menu && !mobile) ? 'offscreen' : 'onscreen'}>Metas</span>
       </Link>
-      <Link to="/metas">
+      <Link to="/categoria">
         <PlusCircle />
         <span className={(!menu && !mobile) ? 'offscreen' : 'onscreen'}>Categorias</span>
       </Link>

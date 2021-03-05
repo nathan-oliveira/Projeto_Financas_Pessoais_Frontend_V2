@@ -1,14 +1,13 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { Link, useNavigate } from 'react-router-dom';
-import { fetchGoals } from '../../../store/goals/goalsGet'
-import { goalDelete } from '../../../store/goals/goalDelete'
+import { Link, useNavigate } from 'react-router-dom'
+import { fetchCategory } from '../../../store/category/categoryGet'
 
-import Error from '../../Helper/Error';
-import Loading from '../../Helper/Loading';
-import Table from '../../Template/Table';
-import Pagination from '../../Template/Table/Pagination';
-import Search from '../../Template/Table/Search';
+import Error from '../../Helper/Error'
+import Loading from '../../Helper/Loading'
+import Table from '../../Template/Table'
+import Pagination from '../../Template/Table/Pagination'
+import Search from '../../Template/Table/Search'
 
 const Listing = () => {
   const [page, setPage] = React.useState(1)
@@ -19,23 +18,22 @@ const Listing = () => {
   const navigate = useNavigate();
 
   const { token } = useSelector(state => state.token.data)
-  const { loading, error, data } = useSelector(state => state.goals)
-
+  const { loading, error, data } = useSelector(state => state.category)
+  
   React.useEffect(() => {
-    dispatch(fetchGoals(token))
+    dispatch(fetchCategory(token))
   }, [dispatch])
 
-  async function deleteGoal(id) {
-    const confirm = window.confirm('Tem certeza que deseja deletar?');
+  async function deleteCategory(id) {
+    const confirm = window.confirm('Tem certeza que deseja deletar?')
 
     if (confirm) {
-      await dispatch(goalDelete({ id, token }))
-      dispatch(fetchGoals(token))
+      console.log(id)
     }
   }
 
-  async function getGoal(id) {
-    navigate(`/metas/editar/${id}`)
+  async function getCategory(id) {
+    navigate(`/categoria/editar/${id}`)
   }
 
   if (loading) return <Loading />
@@ -46,9 +44,9 @@ const Listing = () => {
       <Table
         dataTable={dataTable}
         loading={loading}
-        deletePost={deleteGoal}
-        getPost={getGoal}
-        head={{ id: 'Código', description: 'Descrição', types: 'Tipo', money: 'Valor' }}
+        deletePost={deleteCategory}
+        getPost={getCategory}
+        head={{ id: 'Código', name: 'Descrição' }}
       />
       <Pagination
         data={data}
@@ -63,9 +61,9 @@ const Listing = () => {
     return (
       <div className="animeLeft empty__table">
         <h1 className="title__empty__table">Nenhum registro encontrado!</h1>
-        <Link to="/metas/cadastrar">Criar agora!</Link>
+        <Link to="/categoria/cadastrar">Criar agora!</Link>
       </div>
-    );
+    )
 }
 
 export default Listing
