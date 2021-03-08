@@ -1,12 +1,17 @@
 import React from 'react'
+import { useSelector, useDispatch } from 'react-redux'
 import styles from './Profile.module.scss'
 
 import Head from '../Helper/Head'
 import Breadcrumb from '../Template/Breadcrumb'
+import Form from './Form'
 import Avatar from '../../Assets/img/avatar.png'
 
 const Profile = () => {
   const [img, setImg] = React.useState(Avatar)
+  const { loading, error, data } = useSelector(state => state.token)
+
+  console.log(data)
 
   return (
     <section>
@@ -18,6 +23,7 @@ const Profile = () => {
           <img src={img} alt="Foto de Perfil" width="200px" />
         </div>
         <div className={styles.content__form}>
+          <Form />
         </div>
       </div>
     </section>
