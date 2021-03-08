@@ -14,7 +14,9 @@ export const userLogin = (dataForm) => async (dispatch) => {
   const { payload } = await dispatch(fetchLogin(dataForm))
 
   if (payload.token) {
+    console.log(payload.name)
     window.localStorage.setItem('token', payload.token)
+    window.localStorage.setItem('name', payload.name)
   }
 }
 

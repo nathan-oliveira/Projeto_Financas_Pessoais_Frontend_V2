@@ -19,7 +19,7 @@ const App = () => {
   }, [dispatch])
 
   return (
-    <div className="App">
+    <>
       <BrowserRouter>
         {(!error && data?.token) && <Header />}
         <Main>
@@ -28,7 +28,7 @@ const App = () => {
         {(!error && data?.token) && <Sidebar />}
         {(!error && data?.token) && <Footer />}
       </BrowserRouter>
-    </div>
+    </>
   )
 }
 

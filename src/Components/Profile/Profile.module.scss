@@ -1,0 +1,36 @@
+.content__page {
+  display: grid;
+  grid-template-columns: minmax(140px, 200px) 1fr;
+  grid-gap: 30px;
+}
+
+@media (max-width: 1000px) {
+  .content__page {
+    grid-template-columns: 1fr;
+    grid-gap: 15px;
+  }
+}
+
+.content__image {
+  text-align: center;
+  margin-bottom: 20px;
+
+  img {
+    border-radius: 10px 10px 0 0;
+    box-shadow: 0px 0px 2px 0px rgba(50, 50, 50, 0.45);
+  }
+
+  p {
+    font-size: 17px;
+    padding: 5px;
+    margin-top: -5.8px;
+    background: #f2f2f2;
+    border-radius: 0 0 10px 10px;
+    cursor: pointer;
+    box-shadow: 0px 0px 2px 0px rgba(50, 50, 50, 0.45);
+  }
+}
+
+.content__form {
+  
+}

@@ -53,12 +53,15 @@
           border: none;
           cursor: pointer;
           border-radius: 5px;
-          padding: 2px 4px 0px 5px;
+          padding: 1px 4.5px 2px 5px;
+          text-align: center;
+          justify-content: center;
+          display: flex;
           transition: all .3s;
         }
 
         button:hover {
-          transform: scale(1.1);
+          transform: scale(1.05);
         }
 
         .table__action__trash {

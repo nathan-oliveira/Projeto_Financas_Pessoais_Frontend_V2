@@ -8,6 +8,7 @@ import Business from '../Components/Business'
 import NotFound from '../Components/Helper/NotFound'
 import Goals from '../Components/Goals'
 import Category from '../Components/Category'
+import Profile from '../Components/Profile'
 
 const Router = () => {
   return (
@@ -18,6 +19,7 @@ const Router = () => {
       <ProtectedRoute path="/despesa/*" element={<Business />} />
       <ProtectedRoute path="/metas/*" element={<Goals />} />
       <ProtectedRoute path="/categoria/*" element={<Category />} />
+      <ProtectedRoute path="/minha-conta" element={<Profile />} />
       <Route path="*" element={<NotFound />} />
     </Routes>
   )

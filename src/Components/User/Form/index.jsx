@@ -9,6 +9,7 @@ import Input from '../../Template/Form/Input'
 import Button from '../../Template/Form/Button'
 import Grid from '../../Template/Form/Grid'
 import Row from '../../Template/Form/Row'
+import If from '../../Template/Operator/If'
 
 const Form = ({ login, setLogin, setError }) => {
   const name = useForm()
@@ -47,11 +48,12 @@ const Form = ({ login, setLogin, setError }) => {
         if (!error) setLogin(true);
       }
     }
+
   }
 
   return (
     <form onSubmit={handleSubmit} autoComplete="off" className="form">
-      {!login && (
+      <If test={!login}>
         <Row>
           <Grid cols="12">
             <Input
@@ -63,7 +65,7 @@ const Form = ({ login, setLogin, setError }) => {
             />
           </Grid>
         </Row>
-      )}
+      </If>
       <Row>
         <Grid cols="12">
           <Input
@@ -86,7 +88,7 @@ const Form = ({ login, setLogin, setError }) => {
           />
         </Grid>
       </Row>
-      {!login && (
+      <If test={!login}>
         <Row>
           <Grid cols="12">
             <Input
@@ -98,14 +100,17 @@ const Form = ({ login, setLogin, setError }) => {
             />
           </Grid>
         </Row>
-      )}
+      </If>
 
       <Row classRow="row__reverse">
-        {loading ? (
+        <If test={loading}>
           <Button disabled>{login ? 'Entrando...' : 'Cadastrando...'}</Button>
-        ) : (
-            <Button>{login ? 'Entrar' : 'Cadastrar'}</Button>
-          )}
+        </If>
+
+        <If test={!loading}>
+          <Button>{login ? 'Entrar' : 'Cadastrar'}</Button>
+        </If>
+        
         <button
           type="button"
           className={styles.button__link}

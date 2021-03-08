@@ -3,12 +3,21 @@
   padding: var(--padding-global);
   background: #f7f6fb;
   border-top: 1px solid #e6e6e6;
-  z-index: 2;
+  z-index: 3;
 }
 
 .navbar {
   display: flex;
   justify-content: space-between;
+
+  .navbar__items {
+    display: flex;
+    
+    li {
+      margin-left: 1rem;
+      cursor: pointer;
+    }
+  }
 
   .navbar__icon {
     text-decoration: none;

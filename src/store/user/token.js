@@ -5,7 +5,8 @@ const slice = createAsyncSlice({
   name: 'token',
   initialState: {
     data: {
-      token: window.localStorage.getItem('token') || null
+      token: window.localStorage.getItem('token') || null,
+      name: window.localStorage.getItem('name') || null
     }
   },
   fetchConfig: (dataForm) => POST_LOGIN(dataForm)

@@ -1,0 +1,55 @@
+.dropdown__button {
+  cursor: pointer;
+  background-color: transparent;
+  font-size: 1rem;
+  font-family: "Cabin", sans-serif;
+  border: none;
+  outline: none;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown__content {
+  display: none;
+  position: absolute;
+  background-color: #ffffff;
+  border: 1px solid #e6e6e6;
+  border-radius: 5%;
+  min-width: 140px;
+  z-index: 1;
+  line-height: 35px;
+}
+
+.dropdown__content li {
+  font-size: 1rem;
+  padding: 0px 8px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown__content li:hover {
+  color: #4c60cf;
+}
+
+.dropdown__content a:hover {
+  background-color: rgba(221, 221, 221, 0.726);
+}
+
+.dropdown:hover .dropdown__content {
+  display: block;
+}
+
+.dropdown__center {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+@media (min-width: 801px) {
+  .dropdown__content {
+    margin-left: -30px;
+  }
+}

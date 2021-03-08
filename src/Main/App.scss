@@ -43,7 +43,7 @@ img {
   display: block;
 }
 
-a {
+a, button {
   text-decoration: none;
   color: #333;
 }
@@ -189,17 +189,23 @@ th.table__col2 {
   }
 
   .table__action {
-    width: 15%;
+    width: 16%;
   }
 }
 
-@media (max-width: 926px) {
+@media (max-width: 1114px) {
+  .table__action {
+    width: 17%;
+  }
+}
+
+@media (max-width: 1080px) {
   .table__col3 {
     display: none;
   }
 
   .table__action {
-    width: 19%;
+    width: 20%;
   }
 }
 
@@ -217,7 +223,7 @@ th.table__col2 {
 
 @media (max-width: 341px) {
   .table__action {
-    width: 38%;
+    width: 39%;
   }
 }
 
@@ -240,7 +246,7 @@ th.table__col2 {
 
   a:hover,
   .title__empty__table:hover {
-    transform: scale(1.1);
+    transform: scale(1.05);
     transition: 0.5s;
   }
 
