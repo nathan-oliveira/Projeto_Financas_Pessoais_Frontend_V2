@@ -13,24 +13,51 @@
 
 .content__image {
   text-align: center;
+  margin-top: 2px;
   margin-bottom: 20px;
 
   img {
     border-radius: 10px 10px 0 0;
     box-shadow: 0px 0px 2px 0px rgba(50, 50, 50, 0.45);
+    margin-bottom: 5px;
   }
 
-  p {
-    font-size: 17px;
-    padding: 5px;
-    margin-top: -5.8px;
+  .content__image__button {
+    width: 100%;
+    font-size: 15px;
+    padding: 4px;
     background: #f2f2f2;
+    border: none;
     border-radius: 0 0 10px 10px;
     cursor: pointer;
     box-shadow: 0px 0px 2px 0px rgba(50, 50, 50, 0.45);
+
+    &:hover {
+      color: #4c60cf;
+      box-shadow: 0px 0px 2px 0px #25306d;
+      transition: 1s;
+    }
   }
 }
 
 .content__form {
   
+}
+
+@media (max-width: 1000px) {
+  .content__image {
+    img {
+      display: initial;
+      margin-bottom: 0px;
+    }
+
+    summary {
+      display: flex;
+      justify-content: center;
+
+      .content__image__button {
+        width: 199px;
+      }
+    }
+  }
 }

@@ -52,7 +52,7 @@ const Header = () => {
 
       {mobile && (
         <nav className={`${styles.navbar__mobile} ${mobileMenu ? styles.navbar__mobile__active : styles.navbar__mobile__disabled}`}>
-          <NavItem mobile={true} />
+          <NavItem mobile={true} changeMenuMobile={changeMenuMobile} />
         </nav>
       )}
     </>

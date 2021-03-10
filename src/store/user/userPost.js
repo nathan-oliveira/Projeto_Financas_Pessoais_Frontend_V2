@@ -1,6 +1,6 @@
 import createAsyncSlice from '../helper/createAsyncSlice'
 import { POST_USER } from '../../Services/api'
-import { fetchLogin, resetTokenState } from './token'
+import { fetchLogin, resetTokenState, setDataUser } from './token'
 import { validarToken, fetchErrorToken } from './validarToken'
 
 const slice = createAsyncSlice({
@@ -14,23 +14,34 @@ export const userLogin = (dataForm) => async (dispatch) => {
   const { payload } = await dispatch(fetchLogin(dataForm))
 
   if (payload.token) {
-    console.log(payload.name)
     window.localStorage.setItem('token', payload.token)
     window.localStorage.setItem('name', payload.name)
   }
 }
 
 export const userLogout = () => async (dispatch) => {
-  dispatch(resetTokenState({ token: null }))
-  window.localStorage.removeItem('token')
+  dispatch(resetTokenState({
+    token: null,
+    name: "",
+    email: "",
+    foto: "",
+    nivel: 0
+  }))
+
+  window.localStorage.clear();
 }
 
 export const verifyToken = () => async (dispatch, getState) => {
   const { token } = getState()
 
   if (token?.data?.token) {
-    const { type } = await dispatch(validarToken(token.data.token))
-    if (type === fetchErrorToken.type) dispatch(userLogout());
+    const { type, payload } = await dispatch(validarToken(token.data.token))
+    
+    if (type === fetchErrorToken.type) {
+      await dispatch(userLogout());
+    } else {
+      await dispatch(setDataUser(payload))
+    }
   }
 }
 

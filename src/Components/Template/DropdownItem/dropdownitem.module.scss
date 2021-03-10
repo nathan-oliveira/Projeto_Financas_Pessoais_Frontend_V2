@@ -46,10 +46,14 @@
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-}
 
-@media (min-width: 801px) {
-  .dropdown__content {
-    margin-left: -30px;
+  svg {
+    margin-right: -4px;
   }
 }
+
+// @media (min-width: 801px) {
+  .dropdown__content {
+    margin-left: -10px;
+  }
+// }

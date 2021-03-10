@@ -7,15 +7,18 @@ import PieGraph from './Graphs'
 import Breadcrumb from '../Template/Breadcrumb'
 import Card from './Card'
 import Head from '../Helper/Head'
+import Loading from '../Helper/Loading'
+import Error from '../Helper/Error'
 
 const Home = () => {
   const [graphs, setGraphs] = React.useState('')
   const dispatch = useDispatch();
-  const { cardFinanceiro: data } = useSelector(state => state.business)
+  const { cardFinanceiro: data, loading, error } = useSelector(state => state.business)
 
   React.useEffect(() => {
     dispatch(businessCard())
   }, [dispatch])
+
 
   React.useEffect(() => {
     if (data.receita === "R$ 0,00") return setGraphs('Para exibir os gráficos é necessário existe uma Receita cadastrada')
@@ -24,7 +27,9 @@ const Home = () => {
     setGraphs('')
   }, [data, graphs])
 
-  return (
+  if (loading) return <Loading />
+  if (error) return <Error error={error} />
+  if (data) return (
     <section>
       <Head title="Home" />
       <Breadcrumb title="Dashboard" path="Painel de Controle" />
@@ -42,7 +47,6 @@ const Home = () => {
             <p>{graphs}</p>
           </div>
         )}
-
     </section>
   )
 }

@@ -1,18 +1,17 @@
 import React from 'react'
-import { useSelector, useDispatch } from 'react-redux'
 import styles from './Profile.module.scss'
 
 import Head from '../Helper/Head'
 import Breadcrumb from '../Template/Breadcrumb'
 import Form from './Form'
-import Avatar from '../../Assets/img/avatar.png'
+import FormModal from './FormModal'
+import ImageProfile from './Image'
+
+import Modal from '../Template/Modal'
+import Summary from '../Template/Modal/Summary'
+import Details from '../Template/Modal/Details'
 
 const Profile = () => {
-  const [img, setImg] = React.useState(Avatar)
-  const { loading, error, data } = useSelector(state => state.token)
-
-  console.log(data)
-
   return (
     <section>
       <Head title="Minha Conta" />
@@ -20,7 +19,15 @@ const Profile = () => {
 
       <div className={`${styles.content__page} animeLeft`}>
         <div className={styles.content__image}>
-          <img src={img} alt="Foto de Perfil" width="200px" />
+          <ImageProfile />
+          <Details>
+            <Summary>
+              <div className={styles.content__image__button}>Alterar Foto</div>
+            </Summary>
+            <Modal title="Alterar Foto">
+              <FormModal />
+            </Modal>
+          </Details>
         </div>
         <div className={styles.content__form}>
           <Form />

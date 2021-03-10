@@ -2,5 +2,10 @@
   grid-area: content;
   min-height: 100vh;
   padding: var(--padding-global);
-  z-index: 2;
+  z-index: 1;
+}
+
+.content__login__center {
+  justify-content: center;
+  display: flex;
 }

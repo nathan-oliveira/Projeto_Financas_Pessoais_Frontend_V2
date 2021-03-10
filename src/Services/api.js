@@ -229,3 +229,43 @@ export function DELETE_CATEGORY({ id, token }) {
     }
   }
 }
+
+export function GET_PROFILE(token) {
+  return {
+    url: `${URL_API}/profile`,
+    options: {
+      method: 'GET',
+      headers: {
+        'Authorization': 'Bearer ' + token,
+      },
+    }
+  }
+}
+
+export function PUT_PROFILE(formData, token) {
+  return {
+    url: `${URL_API}/users`,
+    options: {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + token
+      },
+      body: JSON.stringify(formData)
+    }
+  }
+}
+
+export function PATCH_PROFILE_FOTO(formData, token) {
+  return {
+    url: `${URL_API}/profile`,
+    options: {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + token
+      },
+      body: JSON.stringify(formData)
+    }
+  }
+}

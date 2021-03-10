@@ -26,9 +26,9 @@ const Pagination = ({ data, setPage, page, search, setDataTable }) => {
     const currentPosts = data.slice(page * pageDefault - pageDefault, page * pageDefault);
     const filtered = data.filter(dt => {
       if (dt.description) {
-        dt.description.toLowerCase().includes(search.toLowerCase())
+        return dt.description.toLowerCase().includes(search.toLowerCase())
       } else {
-        dt.name.toLowerCase().includes(search.toLowerCase())
+        return dt.name.toLowerCase().includes(search.toLowerCase())
       }
     })
     setDataTable(search.length > 0 ? filtered : currentPosts)
