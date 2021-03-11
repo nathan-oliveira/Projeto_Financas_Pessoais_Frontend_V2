@@ -1,12 +1,5 @@
-@font-face {
-  font-family: Nunito;
-  src: url(../Assets/fonts/Nunito.css);
-}
-
-@font-face {
-  font-family: Spectral;
-  src: url(../Assets/fonts/Spectral.css);
-}
+@import url('../Assets/fonts/Nunito.css');
+@import url('../Assets/fonts/Spectral.css');
 
 :root {
   --padding-global: 15px 20px;

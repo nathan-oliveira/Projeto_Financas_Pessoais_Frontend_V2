@@ -30,6 +30,9 @@
       "react-app/jest"
     ]
   },
+  "sideEffects": [
+    "*.scss"
+  ],
   "browserslist": {
     "production": [
       ">0.2%",
