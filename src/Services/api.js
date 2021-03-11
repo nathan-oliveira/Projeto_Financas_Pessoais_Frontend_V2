@@ -1,4 +1,5 @@
-const URL_API = 'http://localhost:3000/api'
+// const URL_API = 'http://localhost:3000/api'
+const URL_API = 'https://app-financeiro-web.herokuapp.com/api'
 
 export function POST_USER(formData) {
   return {
