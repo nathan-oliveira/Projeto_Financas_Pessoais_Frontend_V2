@@ -5,8 +5,10 @@ import {
   VictoryChart as Chart,
   VictoryBar as Bar
 } from 'victory';
+import { useSelector } from 'react-redux';
 
-const PieGraphs = ({ data }) => {
+const PieGraphs = () => {
+  const { cardFinanceiro: data, loading, error } = useSelector(state => state.cardBusiness)
   const [graph, setGraph] = React.useState([]);
 
   React.useEffect(async () => {

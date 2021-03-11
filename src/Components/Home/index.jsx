@@ -40,7 +40,7 @@ const Home = () => {
       </div>
       {graphs === '' ? (
         <div className="animeLeft dashboard__graphs">
-          <PieGraph data={data} />
+          <PieGraph />
         </div>
       ) : (
           <div className={`animeLeft ${styles.empty__graphs}`}>
