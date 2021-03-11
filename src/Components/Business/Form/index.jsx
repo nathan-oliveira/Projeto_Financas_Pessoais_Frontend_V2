@@ -16,6 +16,7 @@ import RowButton from '../../Template/Form/RowButton'
 
 import Error from '../../Helper/Error'
 import Loading from '../../Helper/Loading'
+import If from '../../Template/Operator/If'
 
 const Form = () => {
   const { id } = useParams();
@@ -30,8 +31,8 @@ const Form = () => {
   const { token } = useSelector(state => state.token.data)
 
   const { data, loading, error, request } = useFetch();
-  const { loading: loadingPost, error: errorPost, request: requestPost } = useFetch();
-  const { loading: errorPut, error: loadingPut, request: requestPut } = useFetch();
+  const { request: requestPost } = useFetch();
+  const { request: requestPut } = useFetch();
   const { data: dataCategory, request: requestCategory} = useFetch()
 
   React.useEffect(() => {
@@ -123,12 +124,12 @@ const Form = () => {
         </Grid>
       </Row>
       <RowButton>
-        
-        {loading ? (
+        <If test={loading}>
           <Button disabled>{id ? 'Atualizando...' : 'Cadastrando...'}</Button>
-        ) : (
-            <Button>{id ? 'Atualizar' : 'Cadastrar'}</Button>
-          )}
+        </If>
+        <If test={!loading}>
+          <Button>{id ? 'Atualizar' : 'Cadastrar'}</Button>
+        </If>
       </RowButton>
     </form>
   )
