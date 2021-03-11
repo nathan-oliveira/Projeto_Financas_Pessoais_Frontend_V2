@@ -23,7 +23,7 @@ const NavItem = ({ mobile, changeMenuMobile }) => {
 
   return (
     <ul className={!mobile ? styles.navbar__item : styles.navbar__item__mobile}>
-      <If test={data.nivel}>
+      <If test={data}>
         <Link to="/" onClick={setMobile} className="animeTop">
           <Home />
           <span className={(!menu && !mobile) ? 'offscreen' : 'onscreen'}>Início</span>
