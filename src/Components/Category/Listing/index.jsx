@@ -30,11 +30,13 @@ const Listing = () => {
     const confirm = window.confirm('Tem certeza que deseja deletar?')
 
     if (confirm) {
-      const { url: urlDelete, options: optionsDelete } = DELETE_CATEGORY({ id, token })
-      await requestDelete(urlDelete, optionsDelete)
+      const { url, options } = DELETE_CATEGORY({ id, token })
+      const { response } = await requestDelete(url, options)
 
-      const { url, options } = GET_CATEGORY(token)
-      request(url, options)
+      if (response.ok) {
+        const { url, options } = GET_CATEGORY(token)
+        request(url, options)
+      }
     }
   }
 

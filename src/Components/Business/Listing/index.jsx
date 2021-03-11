@@ -36,10 +36,10 @@ const Listing = () => {
     const confirm = window.confirm('Tem certeza que deseja deletar?');
 
     if (confirm) {
-      const { url: urlDelete, options: optionsDelete } = DELETE_BUSSINESS({ id, token })
-      await requestDelete(urlDelete, optionsDelete)
+      const { url, options } = DELETE_BUSSINESS({ id, token })
+      const { response } = await requestDelete(url, options)
       
-      dispatch(getBusiness(businessTag))
+      if (response.ok) dispatch(getBusiness(businessTag))
     }
   }
 

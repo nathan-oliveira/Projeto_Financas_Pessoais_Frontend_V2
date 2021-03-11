@@ -29,7 +29,7 @@ const FormModal = () => {
     if (foto.validate()) {
       const dataForm = { foto: foto.value }
       const { url, options } = PATCH_PROFILE_FOTO(dataForm, dataToken.token)
-      const { response  } = await request(url, options)
+      const { response } = await request(url, options)
   
       if (response.ok) dispatch(updateFoto(dataForm))
       if (error) alert(error)

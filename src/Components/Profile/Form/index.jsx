@@ -45,7 +45,6 @@ const Form = () => {
           password_confirmation.setError(true)
 
           return alert("O campo 'Nova Senha' e 'Confirmar (Nova Senha)' não são iguais!")
-          
         }
   
         if (password.value.length < 5 || password_confirmation.value.length < 6) {
@@ -63,7 +62,6 @@ const Form = () => {
       if (response.ok) alert('Perfil atualizado!')
       if (error) alert(error)
     }
-
   }
 
   return (
