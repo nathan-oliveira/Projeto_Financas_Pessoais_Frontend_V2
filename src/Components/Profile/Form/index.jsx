@@ -18,14 +18,14 @@ const Form = () => {
   const password_confirmation = useForm()
 
   const { loading, error, request } = useFetch();
-  const { data: dataToken } = useSelector(state => state.user)
+  const { data } = useSelector(state => state.user)
 
   React.useEffect(() => {
-    if (dataToken) {
-      name.setValue(dataToken.name)
-      email.setValue(dataToken.email)
+    if (data) {
+      name.setValue(data.name)
+      email.setValue(data.email)
     }
-  }, [dataToken])
+  }, [data])
 
   async function handleSubmit(event) {
     event.preventDefault();
@@ -56,7 +56,7 @@ const Form = () => {
 
       }
 
-      const { url, options } = PUT_PROFILE(dataForm, dataToken.token)
+      const { url, options } = PUT_PROFILE(dataForm, data.token)
       const { response } = await request(url, options)
 
       if (response.ok) alert('Perfil atualizado!')
