@@ -1,6 +1,6 @@
 import createAsyncSlice from '../helper/createAsyncSlice'
 import { POST_USER } from '../../Services/api'
-import { fetchLogin, resetTokenState, setDataUser } from './token'
+import { fetchLogin, resetTokenState, setDataUser } from './user'
 import { validarToken, fetchErrorToken } from './validarToken'
 
 const slice = createAsyncSlice({
@@ -32,10 +32,10 @@ export const userLogout = () => async (dispatch) => {
 }
 
 export const verifyToken = () => async (dispatch, getState) => {
-  const { token } = getState()
+  const { user } = getState()
 
-  if (token?.data?.token) {
-    const { type, payload } = await dispatch(validarToken(token.data.token))
+  if (user?.data?.token) {
+    const { type, payload } = await dispatch(validarToken(user.data.token))
     
     if (type === fetchErrorToken.type) {
       await dispatch(userLogout());

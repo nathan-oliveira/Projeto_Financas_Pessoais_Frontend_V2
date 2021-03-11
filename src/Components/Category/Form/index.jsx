@@ -23,7 +23,7 @@ const Form = () => {
 
   const navigate = useNavigate()
 
-  const { token } = useSelector(state => state.token.data)
+  const { token } = useSelector(state => state.user.data)
   const { data, loading, error, request } = useFetch();
   const { request: requestPost } = useFetch()
   const { request: requestPut } = useFetch();

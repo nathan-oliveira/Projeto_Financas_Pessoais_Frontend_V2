@@ -9,7 +9,7 @@ import Head from '../Helper/Head'
 const User = () => {
   const [error, setError] = React.useState(null);
   const [login, setLogin] = React.useState(true);
-  const { data } = useSelector(state => state.token)
+  const { data } = useSelector(state => state.user)
 
   if ((data === null || data?.token === null)) return (
     <section className={`${styles.content} animeTop`}>

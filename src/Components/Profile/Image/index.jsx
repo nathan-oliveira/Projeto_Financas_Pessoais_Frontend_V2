@@ -4,7 +4,7 @@ import Avatar from '../../../Assets/img/avatar.png'
 
 const Image = () => {
   const [foto, setFoto] = React.useState(Avatar);
-  const { data: dataToken } = useSelector(state => state.token)
+  const { data: dataToken } = useSelector(state => state.user)
 
   React.useEffect(() => {
     setFoto((dataToken.foto === "") ? Avatar : dataToken.foto)

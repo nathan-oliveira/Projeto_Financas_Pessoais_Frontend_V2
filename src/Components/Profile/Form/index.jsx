@@ -18,7 +18,7 @@ const Form = () => {
   const password_confirmation = useForm()
 
   const { loading, error, request } = useFetch();
-  const { data: dataToken } = useSelector(state => state.token)
+  const { data: dataToken } = useSelector(state => state.user)
 
   React.useEffect(() => {
     if (dataToken) {

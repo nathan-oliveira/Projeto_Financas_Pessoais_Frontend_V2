@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux'
 import styles from './Main.module.scss'
 
 const Main = ({ children }) => {
-  const { data } = useSelector(state => state.token)
+  const { data } = useSelector(state => state.user)
   
   return (
     <React.Fragment>

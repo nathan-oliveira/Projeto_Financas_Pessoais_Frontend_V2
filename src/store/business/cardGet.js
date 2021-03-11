@@ -23,8 +23,8 @@ export const fetchBusiness = slice.asyncAction;
 export const { getFinanceiro } = slice.actions;
 
 export const businessCard = () => async (dispatch, getState) => {
-  const { token } = getState()
-  const { payload } = await dispatch(fetchBusiness(token.data.token));
+  const { user } = getState()
+  const { payload } = await dispatch(fetchBusiness(user.data.token));
 
   let state = { receita: 0, despesa: 0, total: 0 }
   let valorReceita = 0;

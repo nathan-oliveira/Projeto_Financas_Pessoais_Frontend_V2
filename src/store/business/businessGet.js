@@ -19,8 +19,8 @@ export const fetchBusiness = slice.asyncAction;
 export const { setBusiness } = slice.actions;
 
 export const getBusiness = (business) => async (dispatch, getState) => {
-  const { token } = getState()
-  const { payload } = await dispatch(fetchBusiness(token.data.token));
+  const { user } = getState()
+  const { payload } = await dispatch(fetchBusiness(user.data.token));
   let recipe = [];
 
   payload.forEach((item) => {

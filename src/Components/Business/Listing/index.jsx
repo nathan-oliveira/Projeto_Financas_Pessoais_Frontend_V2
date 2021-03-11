@@ -22,7 +22,7 @@ const Listing = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const { token } = useSelector(state => state.token.data)
+  const { token } = useSelector(state => state.user.data)
   const { request: requestDelete } = useFetch()
   const { loading, error, business } = useSelector(state => state.business)
 

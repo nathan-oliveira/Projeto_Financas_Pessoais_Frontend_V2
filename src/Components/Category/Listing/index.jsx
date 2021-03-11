@@ -17,7 +17,7 @@ const Listing = () => {
   const [dataTable, setDataTable] = React.useState([])
   const navigate = useNavigate();
 
-  const { token } = useSelector(state => state.token.data)
+  const { token } = useSelector(state => state.user.data)
   const { data, loading, error, request} = useFetch()
   const { request: requestDelete } = useFetch()
   

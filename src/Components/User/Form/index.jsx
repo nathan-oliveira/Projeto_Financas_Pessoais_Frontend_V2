@@ -21,7 +21,7 @@ const Form = ({ login, setLogin, setError }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { loading, error, data } = useSelector(state => state.userPost)
-  const { data: dataToken, error: errorToken } = useSelector(state => state.token)
+  const { data: dataToken, error: errorToken } = useSelector(state => state.user)
 
   React.useEffect(() => {
     setError(errorToken);

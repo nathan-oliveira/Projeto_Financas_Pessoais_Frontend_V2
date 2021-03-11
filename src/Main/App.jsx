@@ -12,7 +12,7 @@ import Footer from '../Components/Template/Footer'
 
 const App = () => {
   const dispatch = useDispatch();
-  const { error, data } = useSelector(state => state.token)
+  const { error, data } = useSelector(state => state.user)
 
   React.useEffect(() => {
     dispatch(verifyToken())

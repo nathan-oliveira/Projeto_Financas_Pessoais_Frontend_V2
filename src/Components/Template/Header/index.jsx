@@ -14,7 +14,7 @@ const Header = () => {
   const mobile = useMedia('(max-width: 800px)');
   const [mobileMenu, setMobileMenu] = React.useState(false);
   const { menu } = useSelector(state => state.menu)
-  const { data } = useSelector(state => state.token)
+  const { data } = useSelector(state => state.user)
 
   const dispatch = useDispatch();
   const navigate = useNavigate();

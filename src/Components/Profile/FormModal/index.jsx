@@ -4,7 +4,7 @@ import useForm from '../../../Hooks/useForm'
 import useFetch from '../../../Hooks/useFetch'
 
 import { PATCH_PROFILE_FOTO } from '../../../Services/api'
-import { updateFoto } from '../../../store/user/token'
+import { updateFoto } from '../../../store/user/user'
 
 import Input from '../../Template/Form/Input'
 import RowButton from '../../Template/Form/RowButton'
@@ -15,7 +15,7 @@ const FormModal = () => {
   const foto = useForm()
   const dispatch = useDispatch()
   const { loading, error, request } = useFetch();
-  const { data: dataToken } = useSelector(state => state.token)
+  const { data: dataToken } = useSelector(state => state.user)
 
   React.useEffect(() => {
     if (dataToken) {

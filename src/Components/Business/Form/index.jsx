@@ -28,7 +28,7 @@ const Form = () => {
   const money = useForm('money');
   const category = useForm();
 
-  const { token } = useSelector(state => state.token.data)
+  const { token } = useSelector(state => state.user.data)
 
   const { data, loading, error, request } = useFetch();
   const { request: requestPost } = useFetch();
