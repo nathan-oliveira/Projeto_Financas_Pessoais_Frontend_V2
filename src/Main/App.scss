@@ -304,8 +304,12 @@ details {
     &:focus {
       outline: none;
     }
-    &::-webkit-details-marker {
+    &:-webkit-details-marker {
       display: none;
+    }
+ 
+    &:first-of-type {
+      list-style-type: none;
     }
   }
 }

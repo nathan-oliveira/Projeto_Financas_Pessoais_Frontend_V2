@@ -1,45 +1,38 @@
 import createAsyncSlice from '../helper/createAsyncSlice'
-import { GET_BUSINESS } from '../../Services/api'
 import { numeroPreco } from '../../Helpers'
+import { GET_BUSINESS } from '../../Services/api'
 
 const slice = createAsyncSlice({
-  name: 'business',
+  name: 'recipe',
   initialState: {
-    cardFinanceiro: {
-      receita: '0',
-      despesa: '0',
-      total: '0'
-    },
+    business: []
   },
   reducers: {
-    getFinanceiro(state, action) {
-      state.cardFinanceiro = action.payload
+    setBusiness(state, action) {
+      state.business = action.payload
     },
   },
   fetchConfig: (token) => GET_BUSINESS(token)
 })
 
 export const fetchBusiness = slice.asyncAction;
-export const { getFinanceiro } = slice.actions;
+export const { setBusiness } = slice.actions;
 
-export const businessCard = () => async (dispatch, getState) => {
+export const getBusiness = (business) => async (dispatch, getState) => {
   const { token } = getState()
   const { payload } = await dispatch(fetchBusiness(token.data.token));
+  let recipe = [];
 
-  let state = { receita: 0, despesa: 0, total: 0 }
-  let valorReceita = 0;
-  let valorDespesa = 0;
+  payload.forEach((item) => {
+    if (item.types === business) recipe.push({
+      id: item.id,
+      description: item.description,
+      money: numeroPreco(item.money),
+      category: item.categoryId.name
+    })
+  })
 
-  Object.keys(payload).forEach((item) => {
-    if (payload[item].types === 'receita') valorReceita += parseFloat((payload[item].money));
-    if (payload[item].types === 'despesa') valorDespesa += parseFloat((payload[item].money));
-  });
-
-  state.receita = numeroPreco(valorReceita);
-  state.despesa = numeroPreco(valorDespesa);
-  state.total = numeroPreco(valorReceita - valorDespesa);
-
-  dispatch(getFinanceiro(state))
+  dispatch(setBusiness(recipe))
 }
 
 export default slice.reducer;

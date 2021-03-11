@@ -1,13 +1,10 @@
 import React from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { useSelector } from 'react-redux'
 import { useParams, useNavigate, useLocation } from 'react-router-dom'
-
-import { businessPost } from '../../../store/business/businessPost'
-import { businessGetId } from '../../../store/business/businessGetId'
-import { businessPut } from '../../../store/business/businessPut'
-import { fetchCategory } from '../../../store/category/categoryGet'
-
 import useForm from '../../../Hooks/useForm'
+import useFetch from '../../../Hooks/useFetch'
+
+import { POST_BUSSINESS, PUT_BUSSINESS, GET_BUSINESS_ID, GET_CATEGORY } from '../../../Services/api'
 import { formatMoney, revertMoney } from '../../../Helpers'
 
 import Grid from '../../Template/Form/Grid'
@@ -23,28 +20,29 @@ import Loading from '../../Helper/Loading'
 const Form = () => {
   const { id } = useParams();
   const location = useLocation();
+  const navigate = useNavigate();
 
   const types = useForm();
   const description = useForm();
   const money = useForm('money');
   const category = useForm();
 
-  const navigate = useNavigate();
-  const dispatch = useDispatch();
-
   const { token } = useSelector(state => state.token.data)
-  const { error: errorPost, loading: loadingPost } = useSelector(state => state.businessPost)
-  const { error: errorPut, loading: loadingPut } = useSelector(state => state.businessPut)
-  const { error, loading, data } = useSelector(state => state.businessGetId)
-  const { data: dataCategory } = useSelector(state => state.category)
+
+  const { data, loading, error, request } = useFetch();
+  const { loading: loadingPost, error: errorPost, request: requestPost } = useFetch();
+  const { loading: errorPut, error: loadingPut, request: requestPut } = useFetch();
+  const { data: dataCategory, request: requestCategory} = useFetch()
 
   React.useEffect(() => {
-    dispatch(fetchCategory(token))
+    const { url, options } = GET_CATEGORY(token)
+    requestCategory(url, options)
 
     if (id) {
-      dispatch(businessGetId({ id, token }))
+      const { url, options } = GET_BUSINESS_ID({ id, token })
+      request(url, options)
     }
-  }, [dispatch, id])
+  }, [id])
 
   React.useEffect(() => {
     if (data && id) {
@@ -77,11 +75,15 @@ const Form = () => {
       }
 
       if (id) {
-        await dispatch(businessPut({ id, formData, token }))
-        if (!errorPut && !loadingPut) navigate(`/${types.value}`)
+        const { url, options } = PUT_BUSSINESS({ id, formData, token })
+        const { response } = await requestPut(url, options)
+
+        if (response.ok) navigate(`/${types.value}`)
       } else {
-        await dispatch(businessPost({ formData, token }))
-        if (!errorPost && !loadingPost) navigate(`/${types.value}`)
+        const { url, options } = POST_BUSSINESS({ formData, token })
+        const { response } = await requestPost(url, options)
+
+        if (response.ok) navigate(`/${types.value}`)
       }
     }
   }
@@ -116,11 +118,12 @@ const Form = () => {
             label="Categoria"
             name="categoryId"
             {...category}
-            options={dataCategory}
+            options={dataCategory ? dataCategory : []}
           />
         </Grid>
       </Row>
       <RowButton>
+        
         {loading ? (
           <Button disabled>{id ? 'Atualizando...' : 'Cadastrando...'}</Button>
         ) : (

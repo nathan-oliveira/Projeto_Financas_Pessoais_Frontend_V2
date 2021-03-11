@@ -5,8 +5,8 @@ const slice = createAsyncSlice({
   name: 'token',
   initialState: {
     data: {
-      token: window.localStorage.getItem('token') || null,
-      name: window.localStorage.getItem('name') || "",
+      token: localStorage.getItem('token') || null,
+      name: localStorage.getItem('name') || "",
       email: "",
       foto: "",
       nivel: 0

@@ -14,8 +14,8 @@ export const userLogin = (dataForm) => async (dispatch) => {
   const { payload } = await dispatch(fetchLogin(dataForm))
 
   if (payload.token) {
-    window.localStorage.setItem('token', payload.token)
-    window.localStorage.setItem('name', payload.name)
+    localStorage.setItem('token', payload.token)
+    localStorage.setItem('name', payload.name)
   }
 }
 
@@ -28,7 +28,7 @@ export const userLogout = () => async (dispatch) => {
     nivel: 0
   }))
 
-  window.localStorage.clear();
+  localStorage.clear();
 }
 
 export const verifyToken = () => async (dispatch, getState) => {

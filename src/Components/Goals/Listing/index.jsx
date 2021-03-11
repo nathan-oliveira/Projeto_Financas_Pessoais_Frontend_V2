@@ -1,8 +1,9 @@
 import React from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { useSelector } from 'react-redux'
 import { Link, useNavigate } from 'react-router-dom';
-import { fetchGoals } from '../../../store/goals/goalsGet'
-import { goalDelete } from '../../../store/goals/goalDelete'
+
+import useFetch from '../../../Hooks/useFetch'
+import { GET_GOALS, DELETE_GOAL } from '../../../Services/api'
 
 import Error from '../../Helper/Error';
 import Loading from '../../Helper/Loading';
@@ -15,22 +16,26 @@ const Listing = () => {
   const [search, setSearch] = React.useState('')
   const [dataTable, setDataTable] = React.useState([])
 
-  const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const { token } = useSelector(state => state.token.data)
-  const { loading, error, data } = useSelector(state => state.goals)
+  const { data, loading, error, request} = useFetch()
+  const { request: requestDelete } = useFetch()
 
   React.useEffect(() => {
-    dispatch(fetchGoals(token))
-  }, [dispatch])
+    const { url, options } = GET_GOALS(token)
+    request(url, options)
+  }, [])
 
   async function deleteGoal(id) {
     const confirm = window.confirm('Tem certeza que deseja deletar?');
 
     if (confirm) {
-      await dispatch(goalDelete({ id, token }))
-      dispatch(fetchGoals(token))
+      const { url: urlDelete, options: optionsDelete } = DELETE_GOAL({ id, token })
+      await requestDelete(urlDelete, optionsDelete)
+
+      const { url, options } = GET_GOALS(token)
+      request(url, options)
     }
   }
 
@@ -40,7 +45,7 @@ const Listing = () => {
 
   if (loading) return <Loading />
   if (error) return <Error error={error} />
-  if (data.length > 0) return (
+  if (data !== null && data.length > 0) return (
     <div className="animeLeft">
       <Search setQuery={setSearch} />
       <Table

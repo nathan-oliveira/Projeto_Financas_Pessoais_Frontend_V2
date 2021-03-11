@@ -1,7 +1,7 @@
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import styles from './Home.module.scss'
-import { businessCard } from '../../store/business/businessGet'
+import { businessCard } from '../../store/business/cardGet'
 
 import PieGraph from './Graphs'
 import Breadcrumb from '../Template/Breadcrumb'
@@ -13,7 +13,7 @@ import Error from '../Helper/Error'
 const Home = () => {
   const [graphs, setGraphs] = React.useState('')
   const dispatch = useDispatch();
-  const { cardFinanceiro: data, loading, error } = useSelector(state => state.business)
+  const { cardFinanceiro: data, loading, error } = useSelector(state => state.cardBusiness)
 
   React.useEffect(() => {
     dispatch(businessCard())

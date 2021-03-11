@@ -1,9 +1,9 @@
 import React from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { useSelector } from 'react-redux'
 import { Link, useNavigate } from 'react-router-dom'
 
-import { fetchCategory } from '../../../store/category/categoryGet'
-import { categoryDelete } from  '../../../store/category/categoryDelete'
+import useFetch from '../../../Hooks/useFetch'
+import { GET_CATEGORY, DELETE_CATEGORY } from '../../../Services/api'
 
 import Error from '../../Helper/Error'
 import Loading from '../../Helper/Loading'
@@ -15,23 +15,26 @@ const Listing = () => {
   const [page, setPage] = React.useState(1)
   const [search, setSearch] = React.useState('')
   const [dataTable, setDataTable] = React.useState([])
-
-  const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const { token } = useSelector(state => state.token.data)
-  const { loading, error, data } = useSelector(state => state.category)
+  const { data, loading, error, request} = useFetch()
+  const { request: requestDelete } = useFetch()
   
   React.useEffect(() => {
-    dispatch(fetchCategory(token))
-  }, [dispatch])
+    const { url, options } = GET_CATEGORY(token)
+    request(url, options)
+  }, [])
 
   async function deleteCategory(id) {
     const confirm = window.confirm('Tem certeza que deseja deletar?')
 
     if (confirm) {
-      await dispatch(categoryDelete({ id, token }))
-      dispatch(fetchCategory(token))
+      const { url: urlDelete, options: optionsDelete } = DELETE_CATEGORY({ id, token })
+      await requestDelete(urlDelete, optionsDelete)
+
+      const { url, options } = GET_CATEGORY(token)
+      request(url, options)
     }
   }
 
@@ -41,7 +44,7 @@ const Listing = () => {
 
   if (loading) return <Loading />
   if (error) return <Error error={error} />
-  if (data.length > 0) return (
+  if (data !== null && data.length > 0) return (
     <div className="animeLeft">
       <Search setQuery={setSearch} />
       <Table

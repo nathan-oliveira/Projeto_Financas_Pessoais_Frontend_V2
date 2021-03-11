@@ -1,11 +1,11 @@
 import React from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { useSelector } from 'react-redux'
 import { useNavigate, useParams } from 'react-router-dom'
 
 import useForm from '../../../Hooks/useForm'
-import { goalPost } from '../../../store/goals/goalPost'
-import { goalGetId } from '../../../store/goals/goalGetId'
-import { goalPut } from '../../../store/goals/goalPut'
+import useFetch from '../../../Hooks/useFetch'
+import { POST_GOAL, PUT_GOAL, GET_GOAL_ID } from '../../../Services/api'
+
 import { revertMoney, formatMoney } from '../../../Helpers'
 
 import Input from '../../Template/Form/Input'
@@ -19,24 +19,23 @@ import Error from '../../Helper/Error'
 
 const Form = () => {
   const { id } = useParams();
+  const navigate = useNavigate();
 
   const description = useForm();
   const types = useForm();
   const money = useForm('money');
 
-  const navigate = useNavigate();
-  const dispatch = useDispatch();
-
   const { token } = useSelector(state => state.token.data)
-  const { error: errorPost, loading: loadingPost } = useSelector(state => state.goalPost)
-  const { error, loading, data } = useSelector(state => state.goalGetId)
-  const { error: errorPut, loading: loadingPut } = useSelector(state => state.goalPut)
+  const { data, loading, error, request } = useFetch();
+  const { error: errorPost, loading: loadingPost, request: requestPost } = useFetch()
+  const { loading: errorPut, error: loadingPut, request: requestPut } = useFetch();
 
   React.useEffect(() => {
     if (id) {
-      dispatch(goalGetId({ id, token }))
+      const { url, options } = GET_GOAL_ID({ id, token })
+      request(url, options)
     }
-  }, [dispatch, id])
+  }, [id])
 
   React.useEffect(() => {
     if (data && id) {
@@ -57,11 +56,15 @@ const Form = () => {
       }
 
       if (id) {
-        await dispatch(goalPut({ id, formData, token }))
-        if (!errorPut && !loadingPut) navigate('/metas')
+        const { url, options } = PUT_GOAL({ id, formData, token })
+        const { response } = await requestPut(url, options)
+
+        if (response.ok) navigate('/metas')
       } else {
-        await dispatch(goalPost({ formData, token }))
-        if (!errorPost && !loadingPost) navigate('/metas');
+        const { url, options } = POST_GOAL({ formData, token })
+        const { response } = await requestPost(url, options)
+
+        if (response.ok) navigate('/metas')
       }
     }
   }

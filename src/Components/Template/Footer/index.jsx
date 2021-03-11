@@ -3,7 +3,7 @@ import styles from './footer.module.scss'
 
 const Footer = () => {
   function toLinkedin() {
-    window.open('https://www.linkedin.com/in/nathan-oliveira-mendonca/', '_blank');
+    // window.open('https://www.linkedin.com/in/nathan-oliveira-mendonca/', '_blank');
   }
 
   return (

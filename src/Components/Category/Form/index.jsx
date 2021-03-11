@@ -1,11 +1,10 @@
 import React from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { useSelector } from 'react-redux'
 import { useNavigate, useParams } from 'react-router-dom'
 
 import useForm from '../../../Hooks/useForm'
-import { categoryPost } from '../../../store/category/categoryPost'
-import { categoryGetId } from '../../../store/category/categoryGetId'
-import { categoryPut } from '../../../store/category/categoryPut'
+import useFetch from '../../../Hooks/useFetch'
+import { POST_CATEGORY, GET_CATEGORY_ID, PUT_CATEGORY } from '../../../Services/api'
 
 import Input from '../../Template/Form/Input'
 import Button from '../../Template/Form/Button'
@@ -17,21 +16,20 @@ import Error from '../../Helper/Error'
 
 const Form = () => {
   const { id } = useParams();
-
   const name = useForm();
   const icon = useForm();
 
   const navigate = useNavigate()
-  const dispatch = useDispatch()
 
   const { token } = useSelector(state => state.token.data)
-  const { error, loading, data } = useSelector(state => state.categoryGetId)
-  const { error: errorPost, loading: loadingPost } = useSelector(state => state.categoryPost)
-  const { error: errorPut, loading: loadingPut } = useSelector(state => state.categoryPut)
+  const { data, loading, error, request } = useFetch();
+  const { error: errorPost, loading: loadingPost, request: requestPost } = useFetch()
+  const { loading: errorPut, error: loadingPut, request: requestPut } = useFetch();
 
   React.useEffect(() => {
     if (id) {
-      dispatch(categoryGetId({ id, token }))
+      const { url, options } = GET_CATEGORY_ID({ id, token })
+      request(url, options)
     }
   }, [id])
 
@@ -52,11 +50,15 @@ const Form = () => {
       }
 
       if (id) {
-        await dispatch(categoryPut({ id, formData, token }))
-        if (!errorPut && !loadingPut) navigate('/categoria')
+        const { url, options } = PUT_CATEGORY({ id, formData, token })
+        const { response } = await requestPut(url, options)
+
+        if (response.ok) navigate('/categoria')
       } else {
-        await dispatch(categoryPost({ formData, token }))
-        if (!errorPost && !loadingPost) navigate('/categoria')
+        const { url, options } = POST_CATEGORY({ formData, token })
+        const { response } = await requestPost(url, options)
+
+        if (response.ok) navigate('/categoria')
       }
     }
   }

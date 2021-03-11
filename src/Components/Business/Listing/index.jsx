@@ -1,8 +1,10 @@
 import React from 'react'
 import { useLocation, useNavigate, Link } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
-import { fetchRecipe } from '../../../store/business/recipeGet';
-import { businessDelete } from '../../../store/business/businessDelete'
+
+import useFetch from '../../../Hooks/useFetch'
+import { DELETE_BUSSINESS } from '../../../Services/api'
+import { getBusiness } from '../../../store/business/businessGet';
 
 import Loading from '../../Helper/Loading'
 import Error from '../../Helper/Error'
@@ -21,20 +23,23 @@ const Listing = () => {
   const dispatch = useDispatch();
 
   const { token } = useSelector(state => state.token.data)
-  const { loading, error, recipe } = useSelector(state => state.recipe)
+  const { request: requestDelete } = useFetch()
+  const { loading, error, business } = useSelector(state => state.business)
 
   React.useEffect(() => {
     if (location.pathname.includes('receita')) setBusinessTag('receita')
     if (location.pathname.includes('despesa')) setBusinessTag('despesa')
-    dispatch(fetchRecipe(businessTag))
+    dispatch(getBusiness(businessTag))
   }, [location, dispatch, businessTag])
 
   async function deleteRevenues(id) {
     const confirm = window.confirm('Tem certeza que deseja deletar?');
 
     if (confirm) {
-      await dispatch(businessDelete({ id, token }))
-      dispatch(fetchRecipe(businessTag))
+      const { url: urlDelete, options: optionsDelete } = DELETE_BUSSINESS({ id, token })
+      await requestDelete(urlDelete, optionsDelete)
+      
+      dispatch(getBusiness(businessTag))
     }
   }
 
@@ -44,7 +49,7 @@ const Listing = () => {
 
   if (loading) return <Loading />;
   if (error) return <Error error={error} />
-  if (recipe.length > 0) return (
+  if (business !== null && business.length > 0) return (
     <div className="animeLeft">
       <Search setQuery={setSearch} />
       <Table
@@ -55,7 +60,7 @@ const Listing = () => {
         head={{ id: 'Código', description: 'Descrição', money: 'Valor', category: 'Categoria' }}
       />
       <Pagination
-        data={recipe}
+        data={business}
         setPage={setPage}
         page={page}
         search={search}
