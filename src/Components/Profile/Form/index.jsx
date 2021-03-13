@@ -1,15 +1,15 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
-import useForm from '../../../Hooks/useForm'
-import useFetch from '../../../Hooks/useFetch'
-import { PUT_PROFILE } from '../../../Services/api'
+import useForm from 'Hooks/useForm'
+import useFetch from 'Hooks/useFetch'
+import { PUT_PROFILE } from 'Services/api'
 
-import Input from '../../Template/Form/Input'
-import Row from '../../Template/Form/Row'
-import Grid from '../../Template/Form/Grid'
-import RowButton from '../../Template/Form/RowButton'
-import Button from '../../Template/Form/Button'
-import If from '../../Template/Operator/If'
+import Input from 'Components/Template/Form/Input'
+import Row from 'Components/Template/Form/Row'
+import Grid from 'Components/Template/Form/Grid'
+import RowButton from 'Components/Template/Form/RowButton'
+import Button from 'Components/Template/Form/Button'
+import If from 'Components/Template/Operator/If'
 
 const Form = () => {
   const name = useForm()

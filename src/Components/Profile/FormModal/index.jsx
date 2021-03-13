@@ -1,15 +1,15 @@
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import useForm from '../../../Hooks/useForm'
-import useFetch from '../../../Hooks/useFetch'
+import useForm from 'Hooks/useForm'
+import useFetch from 'Hooks/useFetch'
 
-import { PATCH_PROFILE_FOTO } from '../../../Services/api'
-import { updateFoto } from '../../../store/user/user'
+import { PATCH_PROFILE_FOTO } from 'Services/api'
+import { updateFoto } from 'store/user/user'
 
-import Input from '../../Template/Form/Input'
-import RowButton from '../../Template/Form/RowButton'
-import Button from '../../Template/Form/Button'
-import If from '../../Template/Operator/If'
+import Input from 'Components/Template/Form/Input'
+import RowButton from 'Components/Template/Form/RowButton'
+import Button from 'Components/Template/Form/Button'
+import If from 'Components/Template/Operator/If'
 
 const FormModal = () => {
   const foto = useForm()

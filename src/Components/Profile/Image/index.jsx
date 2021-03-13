@@ -1,6 +1,6 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
-import Avatar from '../../../Assets/img/avatar.png'
+import Avatar from 'Assets/img/avatar.png'
 
 const Image = () => {
   const [foto, setFoto] = React.useState(Avatar);

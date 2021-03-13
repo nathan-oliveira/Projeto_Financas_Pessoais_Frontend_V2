@@ -8,7 +8,7 @@ const Table = ({ dataTable, loading, deletePost, getPost, head }) => {
   const keys = Object.keys(dataTable[0] || [])
 
   return (
-    <>
+    <React.Fragment>
       <table className={`${styles.table} ${!loading && styles.listing}`}>
         <Head keys={keys} head={head} />
         <tbody className={styles.table__tbody}>
@@ -21,7 +21,7 @@ const Table = ({ dataTable, loading, deletePost, getPost, head }) => {
             )}
         </tbody>
       </table>
-    </>
+    </React.Fragment>
   )
 }
 

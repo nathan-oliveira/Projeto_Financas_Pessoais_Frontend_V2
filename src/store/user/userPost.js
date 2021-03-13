@@ -1,5 +1,5 @@
-import createAsyncSlice from '../helper/createAsyncSlice'
-import { POST_USER } from '../../Services/api'
+import createAsyncSlice from 'store/helper/createAsyncSlice'
+import { POST_USER } from 'Services/api'
 import { fetchLogin, resetTokenState, setDataUser } from './user'
 import { validarToken, fetchErrorToken } from './validarToken'
 

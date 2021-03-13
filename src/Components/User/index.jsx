@@ -2,9 +2,10 @@ import React from 'react'
 import { useSelector } from 'react-redux';
 import { Navigate } from 'react-router-dom';
 
+import Head from 'Components/Helper/Head'
+
 import styles from './User.module.scss'
 import Form from './Form'
-import Head from '../Helper/Head'
 
 const User = () => {
   const [error, setError] = React.useState(null);

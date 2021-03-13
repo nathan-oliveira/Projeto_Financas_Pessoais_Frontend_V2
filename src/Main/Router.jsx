@@ -1,14 +1,14 @@
 import React from 'react'
 import { Routes, Route } from 'react-router-dom'
-import ProtectedRoute from '../Components/Helper/ProtectedRoute'
+import ProtectedRoute from 'Components/Helper/ProtectedRoute'
 
-import Home from '../Components/Home'
-import User from '../Components/User'
-import Business from '../Components/Business'
-import NotFound from '../Components/Helper/NotFound'
-import Goals from '../Components/Goals'
-import Category from '../Components/Category'
-import Profile from '../Components/Profile'
+import Home from 'Components/Home'
+import User from 'Components/User'
+import Business from 'Components/Business'
+import NotFound from 'Components/Helper/NotFound'
+import Goals from 'Components/Goals'
+import Category from 'Components/Category'
+import Profile from 'Components/Profile'
 
 const Router = () => {
   return (

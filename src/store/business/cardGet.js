@@ -1,6 +1,6 @@
-import createAsyncSlice from '../helper/createAsyncSlice'
-import { GET_BUSINESS } from '../../Services/api'
-import { numeroPreco } from '../../Helpers'
+import createAsyncSlice from 'store/helper/createAsyncSlice'
+import { GET_BUSINESS } from 'Services/api'
+import { numeroPreco } from 'Helpers'
 
 const slice = createAsyncSlice({
   name: 'business',

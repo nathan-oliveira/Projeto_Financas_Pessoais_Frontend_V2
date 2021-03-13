@@ -7,8 +7,8 @@ const Head = (props) => {
   }, [props])
 
   return (
-    <>
-    </>
+    <React.Fragment>
+    </React.Fragment>
   )
 }
 

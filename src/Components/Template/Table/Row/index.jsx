@@ -1,8 +1,8 @@
 import React from 'react'
 import styles from '../table.module.scss'
 
-import { ReactComponent as Trash } from '../../../../Assets/svg/trash.svg'
-import { ReactComponent as Edit } from '../../../../Assets/svg/edit.svg'
+import { ReactComponent as Trash } from 'Assets/svg/trash.svg'
+import { ReactComponent as Edit } from 'Assets/svg/edit.svg'
 
 const Row = ({ record, getPost, deletePost, head }) => {
   const keys = Object.keys(record)

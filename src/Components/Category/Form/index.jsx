@@ -2,19 +2,19 @@ import React from 'react'
 import { useSelector } from 'react-redux'
 import { useNavigate, useParams } from 'react-router-dom'
 
-import useForm from '../../../Hooks/useForm'
-import useFetch from '../../../Hooks/useFetch'
-import { POST_CATEGORY, GET_CATEGORY_ID, PUT_CATEGORY } from '../../../Services/api'
+import useForm from 'Hooks/useForm'
+import useFetch from 'Hooks/useFetch'
+import { POST_CATEGORY, GET_CATEGORY_ID, PUT_CATEGORY } from 'Services/api'
 
-import Input from '../../Template/Form/Input'
-import Button from '../../Template/Form/Button'
-import Grid from '../../Template/Form/Grid'
-import Row from '../../Template/Form/Row'
-import RowButton from '../../Template/Form/RowButton'
+import Input from 'Components/Template/Form/Input'
+import Button from 'Components/Template/Form/Button'
+import Grid from 'Components/Template/Form/Grid'
+import Row from 'Components/Template/Form/Row'
+import RowButton from 'Components/Template/Form/RowButton'
 
-import Loading from '../../Helper/Loading'
-import Error from '../../Helper/Error'
-import If from '../../Template/Operator/If'
+import Loading from 'Components/Helper/Loading'
+import Error from 'Components/Helper/Error'
+import If from 'Components/Template/Operator/If'
 
 const Form = () => {
   const { id } = useParams();

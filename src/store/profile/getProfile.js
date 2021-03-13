@@ -1,5 +1,5 @@
-import createAsyncSlice from '../helper/createAsyncSlice'
-import { GET_PROFILE } from '../../Services/api'
+import createAsyncSlice from 'store/helper/createAsyncSlice'
+import { GET_PROFILE } from 'Services/api'
 
 const slice = createAsyncSlice({
   name: 'profile',

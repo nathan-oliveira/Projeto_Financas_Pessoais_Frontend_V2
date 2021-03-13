@@ -1,11 +1,12 @@
 import React from 'react'
 import styles from './PieGraphs.module.scss'
+import { useSelector } from 'react-redux';
+
 import {
   VictoryPie as Pie,
   VictoryChart as Chart,
   VictoryBar as Bar
 } from 'victory';
-import { useSelector } from 'react-redux';
 
 const PieGraphs = () => {
   const { cardFinanceiro: data, loading, error } = useSelector(state => state.cardBusiness)

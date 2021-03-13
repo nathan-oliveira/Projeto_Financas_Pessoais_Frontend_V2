@@ -1,14 +1,15 @@
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import styles from './Home.module.scss'
-import { businessCard } from '../../store/business/cardGet'
+import { businessCard } from 'store/business/cardGet'
+
+import Breadcrumb from 'Components/Template/Breadcrumb'
+import Head from 'Components/Helper/Head'
+import Loading from 'Components/Helper/Loading'
+import Error from 'Components/Helper/Error'
 
 import PieGraph from './Graphs'
-import Breadcrumb from '../Template/Breadcrumb'
 import Card from './Card'
-import Head from '../Helper/Head'
-import Loading from '../Helper/Loading'
-import Error from '../Helper/Error'
 
 const Home = () => {
   const [graphs, setGraphs] = React.useState('')
@@ -18,7 +19,6 @@ const Home = () => {
   React.useEffect(() => {
     dispatch(businessCard())
   }, [dispatch])
-
 
   React.useEffect(() => {
     if (data.receita === "R$ 0,00") return setGraphs('Para exibir os gráficos é necessário existe uma Receita cadastrada')

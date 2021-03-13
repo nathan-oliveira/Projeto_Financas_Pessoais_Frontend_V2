@@ -9,10 +9,10 @@ const Image = ({ alt, ...props }) => {
   }
 
   return (
-    <>
+    <React.Fragment>
       {skeleton && <div className={styles.skeleton}></div>}
       <img onLoad={handleLoad} className={`${skeleton ? styles.img : styles.imgs}`} alt={alt} {...props} />
-    </>
+    </React.Fragment>
   )
 }
 

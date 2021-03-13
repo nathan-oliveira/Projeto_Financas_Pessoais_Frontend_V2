@@ -1,7 +1,7 @@
 import React from 'react'
 import styles from './modal.module.scss'
 
-import { ReactComponent as Close } from '../../../Assets/svg/x.svg'
+import { ReactComponent as Close } from 'Assets/svg/x.svg'
 
 const Modal = (props) => {
   return (

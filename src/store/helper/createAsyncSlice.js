@@ -1,4 +1,3 @@
-// importa o createSlice
 import { createSlice } from '@reduxjs/toolkit';
 
 /**
@@ -9,6 +8,7 @@ import { createSlice } from '@reduxjs/toolkit';
  * @param {Object} config.reducers
  * @param {Function} config.fetchConfig
  */
+
 const createAsyncSlice = (config) => {
   const slice = createSlice({
     name: config.name,

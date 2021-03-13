@@ -3,13 +3,13 @@ import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import styles from './NavItem.module.scss'
 
-import If from '../Operator/If'
+import If from 'Components/Template/Operator/If'
 
-import { ReactComponent as Home } from '../../../Assets/svg/home.svg'
-import { ReactComponent as FilePlus } from '../../../Assets/svg/file-plus.svg'
-import { ReactComponent as FileMinus } from '../../../Assets/svg/file-minus.svg'
-import { ReactComponent as TrendingUp } from '../../../Assets/svg/trending-up.svg'
-import { ReactComponent as PlusCircle } from '../../../Assets/svg/plus-circle.svg'
+import { ReactComponent as Home } from 'Assets/svg/home.svg'
+import { ReactComponent as FilePlus } from 'Assets/svg/file-plus.svg'
+import { ReactComponent as FileMinus } from 'Assets/svg/file-minus.svg'
+import { ReactComponent as TrendingUp } from 'Assets/svg/trending-up.svg'
+import { ReactComponent as PlusCircle } from 'Assets/svg/plus-circle.svg'
 
 const NavItem = ({ mobile, changeMenuMobile }) => {
   const { menu } = useSelector(state => state.menu)

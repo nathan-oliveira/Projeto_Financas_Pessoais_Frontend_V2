@@ -1,5 +1,5 @@
-import createAsyncSlice from '../helper/createAsyncSlice'
-import { POST_LOGIN } from '../../Services/api'
+import createAsyncSlice from 'store/helper/createAsyncSlice'
+import { POST_LOGIN } from 'Services/api'
 
 const slice = createAsyncSlice({
   name: 'token',

@@ -1,5 +1,5 @@
 import React from 'react';
-import { formatMoney } from '../Helpers'
+import { formatMoney } from 'Helpers'
 
 const types = {
   email: {

@@ -1,16 +1,18 @@
 import React from 'react'
-import { useLocation, useNavigate, Link } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
+import useFetch from 'Hooks/useFetch'
 
-import useFetch from '../../../Hooks/useFetch'
-import { DELETE_BUSSINESS } from '../../../Services/api'
-import { getBusiness } from '../../../store/business/businessGet';
+import { DELETE_BUSSINESS } from 'Services/api'
+import { getBusiness } from 'store/business/businessGet';
 
-import Loading from '../../Helper/Loading'
-import Error from '../../Helper/Error'
-import Search from '../../Template/Table/Search'
-import Table from '../../Template/Table'
-import Pagination from '../../Template/Table/Pagination'
+import Loading from 'Components/Helper/Loading'
+import Error from 'Components/Helper/Error'
+import NoRegistry from 'Components/Helper/NoRegistry'
+
+import Search from 'Components/Template/Table/Search'
+import Table from 'Components/Template/Table'
+import Pagination from 'Components/Template/Table/Pagination'
 
 const Listing = () => {
   const [businessTag, setBusinessTag] = React.useState('');
@@ -25,6 +27,7 @@ const Listing = () => {
   const { token } = useSelector(state => state.user.data)
   const { request: requestDelete } = useFetch()
   const { loading, error, business } = useSelector(state => state.business)
+  const state = useSelector(state => state)
 
   React.useEffect(() => {
     if (location.pathname.includes('receita')) setBusinessTag('receita')
@@ -49,32 +52,33 @@ const Listing = () => {
 
   if (loading) return <Loading />;
   if (error) return <Error error={error} />
-  if (business !== null && business.length > 0) return (
-    <div className="animeLeft">
-      <Search setQuery={setSearch} />
-      <Table
-        dataTable={dataTable}
-        loading={loading}
-        deletePost={deleteRevenues}
-        getPost={getRevenues}
-        head={{ id: 'Código', description: 'Descrição', money: 'Valor', category: 'Categoria' }}
-      />
-      <Pagination
-        data={business}
-        setPage={setPage}
-        page={page}
-        search={search}
-        setDataTable={setDataTable}
-      />
-    </div>
+  return (
+    <React.Fragment>
+      {(business !== null && business.length > 0) && (
+        <div className="animeLeft">
+          <Search setQuery={setSearch} />
+          <Table
+            dataTable={dataTable}
+            loading={loading}
+            deletePost={deleteRevenues}
+            getPost={getRevenues}
+            head={{ id: 'Código', description: 'Descrição', money: 'Valor', category: 'Categoria' }}
+          />
+          <Pagination
+            data={business}
+            setPage={setPage}
+            page={page}
+            search={search}
+            setDataTable={setDataTable}
+          />
+        </div>
+      )}
+      
+      {(business.length === 0) && (
+        <NoRegistry path={`/${businessTag}/cadastrar`} />
+      )}
+    </React.Fragment>
   )
-  else
-    return (
-      <div className="animeLeft empty__table">
-        <h1 className="title__empty__table">Nenhum registro encontrado!</h1>
-        <Link to={`/${businessTag}/cadastrar`}>Criar agora!</Link>
-      </div>
-    );
 }
 
 export default Listing

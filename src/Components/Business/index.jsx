@@ -2,13 +2,13 @@ import React from 'react'
 import styles from './Expenditure.module.scss'
 import { Routes, Route, useLocation } from 'react-router-dom'
 
-import Breadcrumb from '../Template/Breadcrumb'
-import HeaderMenu from '../Template/HeaderMenu'
+import Breadcrumb from 'Components/Template/Breadcrumb'
+import HeaderMenu from 'Components/Template/HeaderMenu'
+import NotFound from 'Components/Helper/NotFound'
+import Head from 'Components/Helper/Head'
 
-import Listing from '../Business/Listing'
-import Form from '../Business/Form'
-import NotFound from '../Helper/NotFound'
-import Head from '../Helper/Head'
+import Listing from './Listing'
+import Form from './Form'
 
 const Expenditure = () => {
   const [businessTag, setBusinessTag] = React.useState('');

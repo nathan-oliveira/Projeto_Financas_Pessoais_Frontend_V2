@@ -1,7 +1,7 @@
 import React from 'react'
 import styles from './search.module.scss'
 
-import { ReactComponent as SearchIcon } from '../../../../Assets/svg/search.svg'
+import { ReactComponent as SearchIcon } from 'Assets/svg/search.svg'
 
 const Search = ({ setQuery }) => {
   return (

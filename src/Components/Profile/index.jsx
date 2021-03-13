@@ -1,15 +1,15 @@
 import React from 'react'
 import styles from './Profile.module.scss'
 
-import Head from '../Helper/Head'
-import Breadcrumb from '../Template/Breadcrumb'
+import Head from 'Components/Helper/Head'
+import Breadcrumb from 'Components/Template/Breadcrumb'
+import Modal from 'Components/Template/Modal'
+import Summary from 'Components/Template/Modal/Summary'
+import Details from 'Components/Template/Modal/Details'
+
 import Form from './Form'
 import FormModal from './FormModal'
 import ImageProfile from './Image'
-
-import Modal from '../Template/Modal'
-import Summary from '../Template/Modal/Summary'
-import Details from '../Template/Modal/Details'
 
 const Profile = () => {
   return (

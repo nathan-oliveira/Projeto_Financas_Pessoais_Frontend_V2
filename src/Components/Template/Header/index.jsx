@@ -1,14 +1,14 @@
 import React from 'react'
 import styles from './Header.module.scss'
 
-import { useNavigate, Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
-import { userLogout } from '../../../store/user/userPost'
-import { toggleMenu } from '../../../store/menu/menuToggle'
+import { userLogout } from 'store/user/userPost'
+import { toggleMenu } from 'store/menu/menuToggle'
 
-import useMedia from '../../../Hooks/useMedia'
-import NavItem from '../NavItem'
-import Dropdown from '../../Template/DropdownItem'
+import useMedia from 'Hooks/useMedia'
+import NavItem from 'Components/Template/NavItem'
+import Dropdown from 'Components/Template/DropdownItem'
 
 const Header = () => {
   const mobile = useMedia('(max-width: 800px)');
@@ -28,7 +28,7 @@ const Header = () => {
   }
 
   return (
-    <>
+    <React.Fragment>
       <header className={`${styles.nav} ${styles.navbar}`}>
         {mobile ? (
           <button
@@ -55,7 +55,7 @@ const Header = () => {
           <NavItem mobile={true} changeMenuMobile={changeMenuMobile} />
         </nav>
       )}
-    </>
+    </React.Fragment>
   )
 }
 

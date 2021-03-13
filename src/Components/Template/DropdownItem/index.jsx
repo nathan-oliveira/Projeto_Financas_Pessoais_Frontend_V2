@@ -1,7 +1,7 @@
 import React from 'react'
 import styles from './dropdownitem.module.scss'
 
-import { ReactComponent as ChevronDown } from '../../../Assets/svg/chevron-down.svg'
+import { ReactComponent as ChevronDown } from 'Assets/svg/chevron-down.svg'
 
 const DropdownItem = (props) => {
   return (

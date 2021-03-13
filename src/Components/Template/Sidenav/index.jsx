@@ -2,8 +2,8 @@ import React from 'react'
 import styles from './Sidenav.module.scss'
 import { useSelector } from 'react-redux'
 
-import NavItem from '../NavItem'
-import Logo from '../Logo'
+import NavItem from 'Components/Template/NavItem'
+import Logo from 'Components/Template/Logo'
 
 const Sidenav = () => {
   const { menu } = useSelector(state => state.menu)

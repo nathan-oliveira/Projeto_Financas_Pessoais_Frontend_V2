@@ -1,5 +1,5 @@
-import createAsyncSlice from '../helper/createAsyncSlice'
-import { VALIDAR_TOKEN } from '../../Services/api'
+import createAsyncSlice from 'store/helper/createAsyncSlice'
+import { VALIDAR_TOKEN } from 'Services/api'
 
 const slice = createAsyncSlice({
   name: 'validarToken',

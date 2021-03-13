@@ -1,23 +1,21 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
 import { useNavigate, useParams } from 'react-router-dom'
+import useForm from 'Hooks/useForm'
+import useFetch from 'Hooks/useFetch'
+import { POST_GOAL, PUT_GOAL, GET_GOAL_ID } from 'Services/api'
 
-import useForm from '../../../Hooks/useForm'
-import useFetch from '../../../Hooks/useFetch'
-import { POST_GOAL, PUT_GOAL, GET_GOAL_ID } from '../../../Services/api'
+import { revertMoney, formatMoney } from 'Helpers'
 
-import { revertMoney, formatMoney } from '../../../Helpers'
-
-import Input from '../../Template/Form/Input'
-import Select from '../../Template/Form/Select'
-import Button from '../../Template/Form/Button'
-import Grid from '../../Template/Form/Grid'
-import Row from '../../Template/Form/Row'
-import RowButton from '../../Template/Form/RowButton'
-
-import Loading from '../../Helper/Loading'
-import Error from '../../Helper/Error'
-import If from '../../Template/Operator/If'
+import Input from 'Components/Template/Form/Input'
+import Select from 'Components/Template/Form/Select'
+import Button from 'Components/Template/Form/Button'
+import Grid from 'Components/Template/Form/Grid'
+import Row from 'Components/Template/Form/Row'
+import RowButton from 'Components/Template/Form/RowButton'
+import If from 'Components/Template/Operator/If'
+import Loading from 'Components/Helper/Loading'
+import Error from 'Components/Helper/Error'
 
 const Form = () => {
   const { id } = useParams();

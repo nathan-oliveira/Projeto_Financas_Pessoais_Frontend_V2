@@ -1,9 +1,9 @@
 import React from 'react'
 import styles from './Card.module.scss'
-import { dataAtualFormatada } from '../../../Helpers'
+import { dataAtualFormatada } from 'Helpers'
 
-import { ReactComponent as Donate } from '../../../Assets/svg/donate-solid.svg'
-import { ReactComponent as ArrowAlt } from '../../../Assets/svg/arrow-alt-circle-right-solid.svg'
+import { ReactComponent as Donate } from 'Assets/svg/donate-solid.svg'
+import { ReactComponent as ArrowAlt } from 'Assets/svg/arrow-alt-circle-right-solid.svg'
 
 const Card = ({ color, valor }) => {
   return (

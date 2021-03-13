@@ -2,13 +2,13 @@ import React from 'react'
 import styles from './Goals.module.scss'
 import { Routes, Route } from 'react-router-dom'
 
-import Breadcrumb from '../Template/Breadcrumb'
-import HeaderMenu from '../Template/HeaderMenu'
-import Head from '../Helper/Head'
+import Breadcrumb from 'Components/Template/Breadcrumb'
+import HeaderMenu from 'Components/Template/HeaderMenu'
+import Head from 'Components/Helper/Head'
+import NotFound from 'Components/Helper/NotFound'
 
-import Listing from '../Goals/Listing'
+import Listing from './Listing'
 import Form from './Form'
-import NotFound from '../Helper/NotFound'
 
 const Goals = () => {
   return (

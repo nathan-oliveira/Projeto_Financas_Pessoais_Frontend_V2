@@ -1,15 +1,15 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import useFetch from 'Hooks/useFetch'
+import { GET_GOALS, DELETE_GOAL } from 'Services/api'
 
-import useFetch from '../../../Hooks/useFetch'
-import { GET_GOALS, DELETE_GOAL } from '../../../Services/api'
-
-import Error from '../../Helper/Error';
-import Loading from '../../Helper/Loading';
-import Table from '../../Template/Table';
-import Pagination from '../../Template/Table/Pagination';
-import Search from '../../Template/Table/Search';
+import Error from 'Components/Helper/Error';
+import Loading from 'Components/Helper/Loading';
+import NoRegistry from 'Components/Helper/NoRegistry';
+import Table from 'Components/Template/Table';
+import Pagination from 'Components/Template/Table/Pagination';
+import Search from 'Components/Template/Table/Search';
 
 const Listing = () => {
   const [page, setPage] = React.useState(1)
@@ -47,32 +47,31 @@ const Listing = () => {
 
   if (loading) return <Loading />
   if (error) return <Error error={error} />
-  if (data !== null && data.length > 0) return (
-    <div className="animeLeft">
-      <Search setQuery={setSearch} />
-      <Table
-        dataTable={dataTable}
-        loading={loading}
-        deletePost={deleteGoal}
-        getPost={getGoal}
-        head={{ id: 'Código', description: 'Descrição', types: 'Tipo', money: 'Valor' }}
-      />
-      <Pagination
-        data={data}
-        setPage={setPage}
-        page={page}
-        search={search}
-        setDataTable={setDataTable}
-      />
-    </div>
+  return (
+    <React.Fragment>
+      {(data !== null) ? (
+        <div className="animeLeft">
+          <Search setQuery={setSearch} />
+          <Table
+            dataTable={dataTable}
+            loading={loading}
+            deletePost={deleteGoal}
+            getPost={getGoal}
+            head={{ id: 'Código', description: 'Descrição', types: 'Tipo', money: 'Valor' }}
+          />
+          <Pagination
+            data={data}
+            setPage={setPage}
+            page={page}
+            search={search}
+            setDataTable={setDataTable}
+          />
+        </div>
+      ) : (
+        <NoRegistry to="/metas/cadastrar" />
+      )}
+    </React.Fragment>
   )
-  else
-    return (
-      <div className="animeLeft empty__table">
-        <h1 className="title__empty__table">Nenhum registro encontrado!</h1>
-        <Link to="/metas/cadastrar">Criar agora!</Link>
-      </div>
-    );
 }
 
 export default Listing

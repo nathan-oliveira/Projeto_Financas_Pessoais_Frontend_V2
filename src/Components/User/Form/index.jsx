@@ -2,15 +2,15 @@ import React from 'react'
 import styles from './Form.module.scss'
 import { useSelector, useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
-import useForm from '../../../Hooks/useForm'
+import useForm from 'Hooks/useForm'
 
-import { userPost, userLogin } from '../../../store/user/userPost'
+import { userPost, userLogin } from 'store/user/userPost'
 
-import Input from '../../Template/Form/Input'
-import Button from '../../Template/Form/Button'
-import Grid from '../../Template/Form/Grid'
-import Row from '../../Template/Form/Row'
-import If from '../../Template/Operator/If'
+import Input from 'Components/Template/Form/Input'
+import Button from 'Components/Template/Form/Button'
+import Grid from 'Components/Template/Form/Grid'
+import Row from 'Components/Template/Form/Row'
+import If from 'Components/Template/Operator/If'
 
 const Form = ({ login, setLogin, setError }) => {
   const name = useForm()
@@ -113,6 +113,7 @@ const Form = ({ login, setLogin, setError }) => {
         </If>
         
         <button
+          disabled={loading ? true : false}
           type="button"
           className={styles.button__link}
           onClick={() => setLogin(!login)}
